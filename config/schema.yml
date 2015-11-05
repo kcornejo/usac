@@ -1,0 +1,14 @@
+propel:
+  usuario:
+    id:                                ~
+    usuario:                           { type: varchar(32), required: true }
+    clave:                             { type: varchar(40) }
+    nombre:                            { type: varchar(60), required: true, primaryString: true }
+    apellido:                          { type: varchar(60), required: true }
+    administrador:                     { type: boolean, default: false }
+    created_at:                        ~
+    updated_at:                        ~
+    created_by:                        { type: varchar(32) }
+    updated_by:                        { type: varchar(32) }
+    _uniques:
+      llave:                           [ usuario ]    
