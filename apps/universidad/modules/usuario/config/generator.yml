@@ -14,8 +14,14 @@ generator:
     config:
       actions: ~
       fields:  ~
-      list:    ~
-      filter:  ~
-      form:    ~
-      edit:    ~
-      new:     ~
+      list:
+        title:             Listado de Usuarios
+        display:           [usuario,  nombre, apellido, administrador]
+      filter:
+         display:           [usuario,  nombre, apellido, administrador]
+      form:
+        display:           [usuario, clave, nombre, apellido, administrador]
+      edit:
+        title:           Editar Usuario
+      new:
+        title:           Nuevo Usuario

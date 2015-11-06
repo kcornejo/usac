@@ -1,0 +1,27 @@
+generator:
+  class: sfPropelGenerator
+  param:
+    model_class:           cliente
+    theme:                 fusion
+    non_verbose_templates: true
+    with_show:             false
+    singular:              cliente
+    plural:                clientes
+    route_prefix:          cliente
+    with_propel_route:     1
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        display:           [nombre, correo, direccion, telefono, ciudad]
+        title:             Listado de Clientes
+      filter:
+        display:           [nombre, correo, direccion, telefono, ciudad]
+      form:
+        display:           [nombre, correo, direccion, telefono, ciudad]
+      edit:
+        title:             Editar Cliente
+      new:
+        title:             Nuevo Cliente

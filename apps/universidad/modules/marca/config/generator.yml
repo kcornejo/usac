@@ -1,0 +1,26 @@
+generator:
+  class: sfPropelGenerator
+  param:
+    model_class:           marca
+    theme:                 fusion
+    non_verbose_templates: true
+    with_show:             false
+    singular:              marca
+    plural:                marcas
+    route_prefix:          marca
+    with_propel_route:     1
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        title:              Listado de Marcas
+      filter:
+        display:            [nombre, descripcion]
+      form:
+        display:            [nombre, descripcion]
+      edit:
+        title:               Editar Marca
+      new:
+        title:               Nueva Marca

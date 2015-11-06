@@ -3,9 +3,9 @@
 /**
  * Usuario filter form base class.
  *
- * @package    plan
+ * @package    universidad
  * @subpackage filter
- * @author     via
+ * @author     Univ
  */
 abstract class BaseUsuarioFormFilter extends BaseFormFilterPropel
 {

@@ -1,0 +1,27 @@
+generator:
+  class: sfPropelGenerator
+  param:
+    model_class:           tipoProducto
+    theme:                 fusion
+    non_verbose_templates: true
+    with_show:             false
+    singular:              tipoProducto
+    plural:                tipoProductos
+    route_prefix:          tipo_producto
+    with_propel_route:     1
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        title:             Listado de Tipos de Productos
+        display:           [nombre, descripcion]
+      filter:
+        display:           [nombre, descripcion]
+      form:
+        display:           [nombre, descripcion]
+      edit:
+        title:             Editar Tipo de Producto
+      new:
+        title:             Nuevo Tipo de Producto

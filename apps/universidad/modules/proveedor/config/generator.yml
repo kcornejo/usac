@@ -1,0 +1,27 @@
+generator:
+  class: sfPropelGenerator
+  param:
+    model_class:           proveedor
+    theme:                 fusion
+    non_verbose_templates: true
+    with_show:             false
+    singular:              proveedor
+    plural:                proveedors
+    route_prefix:          proveedor
+    with_propel_route:     1
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        title:             Listado de Proveedores
+        display:           [nombre, direccion, telefono, ciudad]
+      filter:
+        display:           [nombre, direccion, telefono, ciudad]
+      form:
+        display:           [nombre, direccion, telefono, ciudad]
+      edit:
+        title:             Editar Proveedor
+      new:
+        title:             Nuevo Proveedor

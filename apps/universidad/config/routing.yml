@@ -1,3 +1,66 @@
+tipo_usuario:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                tipoUsuario
+    module:               tipo_usuario
+    prefix_path:          /tipo_usuario
+    column:               id
+    with_wildcard_routes: true
+
+tipo_transaccion:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                tipoTransaccion
+    module:               tipo_transaccion
+    prefix_path:          /tipo_transaccion
+    column:               id
+    with_wildcard_routes: true
+
+tipo_producto:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                tipoProducto
+    module:               tipo_producto
+    prefix_path:          /tipo_producto
+    column:               id
+    with_wildcard_routes: true
+
+tipo_pago:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                tipoPago
+    module:               tipo_pago
+    prefix_path:          /tipo_pago
+    column:               id
+    with_wildcard_routes: true
+
+proveedor:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                proveedor
+    module:               proveedor
+    prefix_path:          /proveedor
+    column:               id
+    with_wildcard_routes: true
+
+marca:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                marca
+    module:               marca
+    prefix_path:          /marca
+    column:               id
+    with_wildcard_routes: true
+
+cliente:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                cliente
+    module:               cliente
+    prefix_path:          /cliente
+    column:               id
+    with_wildcard_routes: true
+
 usuario:
   class: sfPropelORMRouteCollection
   options:

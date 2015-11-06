@@ -5,9 +5,9 @@
  *
  * @method Usuario getObject() Returns the current form's model object
  *
- * @package    plan
+ * @package    universidad
  * @subpackage form
- * @author     via
+ * @author     Univ
  */
 abstract class BaseUsuarioForm extends BaseFormPropel
 {

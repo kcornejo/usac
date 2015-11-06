@@ -64,7 +64,47 @@
                                 <i class="fa fa-home"></i> <span>Inicio</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
                         </li>
+                         <li class="">
+                            <a href="<?php echo url_for('usuario/index') ?>">
+                                <i class="fa fa-user"></i> <span>Usuarios</span> <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                        </li>
+                         <li class="">
+                            <a href="<?php echo url_for('cliente/index') ?>">
+                                <i class="fa fa-users"></i> <span>Clientes</span> <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                        </li>
                         <li class="">
+                            <a href="<?php echo url_for('marca/index') ?>">
+                                <i class="fa fa-file-code-o"></i> <span>Marca</span> <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="<?php echo url_for('proveedor/index') ?>">
+                                <i class="fa fa-refresh"></i> <span>Proveedor</span> <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                        </li>
+                         <li class="">
+                            <a href="<?php echo url_for('tipo_pago/index') ?>">
+                                <i class="fa fa-money"></i> <span>Tipo de Pago</span> <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="<?php echo url_for('tipo_producto/index') ?>">
+                                <i class="fa fa-check"></i> <span>Tipo de Producto</span> <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="<?php echo url_for('tipo_transaccion/index') ?>">
+                                <i class="fa fa-check"></i> <span>Tipo de Transaccion</span> <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="<?php echo url_for('tipo_usuario/index') ?>">
+                                <i class="fa fa-shield"></i> <span>Tipo de Usuario</span> <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                        </li>
+                         <li class="">
                             <a href="<?php echo url_for('seguridad/logout') ?>">
                                 <i class="fa fa-key"></i> <span>Cerrar Sesión</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
