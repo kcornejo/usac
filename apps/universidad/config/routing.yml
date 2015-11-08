@@ -1,3 +1,12 @@
+producto:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                producto
+    module:               producto
+    prefix_path:          /producto
+    column:               id
+    with_wildcard_routes: true
+
 tipo_usuario:
   class: sfPropelORMRouteCollection
   options:

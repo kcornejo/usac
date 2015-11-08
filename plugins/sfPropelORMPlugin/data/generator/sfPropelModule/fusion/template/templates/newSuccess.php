@@ -4,7 +4,7 @@
 [?php include_partial('<?php echo $this->getModuleName() ?>/flashes') ?]
 
 
-<div class="panel panel-piluku">
+<div class="panel panel-success">
     <div class="panel-heading bg-green2">
         <h3 class='panel-title'>[?php echo <?php echo $this->getI18NString('new.title') ?> ?]</h3>
     </div>

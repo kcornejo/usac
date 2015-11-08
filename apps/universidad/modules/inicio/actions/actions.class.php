@@ -16,7 +16,7 @@ class inicioActions extends sfActions {
      * @param sfRequest $request A request object
      */
     public function executeIndex(sfWebRequest $request) {
-        
+        $this->facturas = FacturaQuery::create()->findByActivo(true);
     }
 
 }

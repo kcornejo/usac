@@ -1,7 +1,5 @@
 <?php
 
-
-
 /**
  * Skeleton subclass for representing a row from the 'tipo_producto' table.
  *
@@ -17,6 +15,23 @@
  *
  * @package    propel.generator.lib.model
  */
-class TipoProducto extends BaseTipoProducto
-{
+class TipoProducto extends BaseTipoProducto {
+
+    public function save(PropelPDO $con = null) {
+        $BitacoraCambios = new BitacoraCambios();
+        $BitacoraCambios->setModelo('Tipo de Producto');
+        $BitacoraCambios->setIp(sfContext::getInstance()->getRequest()->getRemoteAddress());
+        if ($this->isNew()) {
+            $BitacoraCambios->setDescripcion('Creacion de Tipo de Producto: ' . $this->getDescripcion());
+        } else {
+            $BitacoraCambios->setDescripcion('Modificacion de Tipo de Producto: ' . $this->getDescripcion());
+        }
+        $Usuario = UsuarioQuery::create()->findOneById(sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad'));
+        if ($Usuario) {
+            $BitacoraCambios->setCreatedBy($Usuario->getUsuario());
+        }
+        $BitacoraCambios->save();
+        return parent::save($con);
+    }
+
 }

@@ -1,7 +1,5 @@
 <?php
 
-
-
 /**
  * Skeleton subclass for representing a row from the 'proveedor' table.
  *
@@ -17,6 +15,23 @@
  *
  * @package    propel.generator.lib.model
  */
-class Proveedor extends BaseProveedor
-{
+class Proveedor extends BaseProveedor {
+
+    public function save(PropelPDO $con = null) {
+        $BitacoraCambios = new BitacoraCambios();
+        $BitacoraCambios->setModelo('Proveedor');
+        $BitacoraCambios->setIp(sfContext::getInstance()->getRequest()->getRemoteAddress());
+        if ($this->isNew()) {
+            $BitacoraCambios->setDescripcion('Creacion de Proveedor: ' . $this->getNombre());
+        } else {
+            $BitacoraCambios->setDescripcion('Modificacion de Proveedor: ' . $this->getNombre());
+        }
+        $Usuario = UsuarioQuery::create()->findOneById(sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad'));
+        if ($Usuario) {
+            $BitacoraCambios->setCreatedBy($Usuario->getUsuario());
+        }
+        $BitacoraCambios->save();
+        return parent::save($con);
+    }
+
 }

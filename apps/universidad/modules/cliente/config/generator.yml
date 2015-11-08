@@ -15,7 +15,7 @@ generator:
       actions: ~
       fields:  ~
       list:
-        display:           [nombre, correo, direccion, telefono, ciudad]
+        display:           [nombre, correo, direccion, telefono, ciudad, puntos]
         title:             Listado de Clientes
       filter:
         display:           [nombre, correo, direccion, telefono, ciudad]

@@ -16,7 +16,7 @@
         <!-- AdminLTE Skins. Choose a skin from the css/skins
              folder instead of downloading all of them to reduce the load. -->
         <link href="/vendor/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
-
+        <link href="/css/kenStyle.css" rel="stylesheet" type="text/css" />
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -34,7 +34,7 @@
                         <div class="navbar-header">
 
                             <a href="<?php echo url_for('inicio/index') ?>" class="navbar-brand">
-                               <img src="/vendor/dist/img/logo_farmacia.png" style="width:60px;margin-top:-5px"/>
+                                <img src="/vendor/dist/img/logo_farmacia.png" style="width:60px;margin-top:-5px"/>
                             </a>
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
                                 <i class="fa fa-bars"></i>
@@ -47,10 +47,14 @@
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Catalogo <span class="caret"></span></a>
                                     <ul class="dropdown-menu" role="menu">
-                                        <li class="header">Menu de Navegacion</li>
                                         <li class="">
                                             <a href="<?php echo url_for('usuario/index') ?>">
                                                 <i class="fa fa-user"></i> <span>Usuarios</span> 
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="<?php echo url_for('producto/index') ?>">
+                                                <i class="fa fa-check"></i> <span>Producto</span> 
                                             </a>
                                         </li>
                                         <li class="">
@@ -88,9 +92,29 @@
                                                 <i class="fa fa-shield"></i> <span>Tipo de Usuario</span> 
                                             </a>
                                         </li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Movimientos <span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
                                         <li class="">
-                                            <a href="<?php echo url_for('seguridad/logout') ?>">
-                                                <i class="fa fa-key"></i> <span>Cerrar Sesión</span> 
+                                            <a href="<?php echo url_for('inventario/index') ?>">
+                                                <i class="fa fa-plus"></i> <span>Ingreso a Inventario</span> 
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="<?php echo url_for('venta/index') ?>">
+                                                <i class="fa fa-money"></i> <span>Venta</span> 
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Registro <span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li class="">
+                                            <a href="<?php echo url_for('bitacora_cambios/index') ?>">
+                                                <i class="fa fa-book"></i> <span>Bitacora de Cambios</span> 
                                             </a>
                                         </li>
                                     </ul>
@@ -136,6 +160,8 @@
             <!-- Full Width Column -->
             <div class="content-wrapper">
                 <div class="container">
+                    <br/><br/>
+                    <?php include_partial('inicio/avisos') ?>
                     <?php echo $sf_content ?>
                 </div><!-- /.container -->
             </div><!-- /.content-wrapper -->
@@ -157,9 +183,15 @@
         <script src="/vendor/plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
         <!-- FastClick -->
         <script src="/vendor/plugins/fastclick/fastclick.min.js" type="text/javascript"></script>
+        <script src="/vendor/plugins/input-mask/jquery.inputmask.js" type="text/javascript"></script>
+        <script src="/vendor/plugins/input-mask/jquery.inputmask.date.extensions.js" type="text/javascript"></script>
+        <script src="/vendor/plugins/input-mask/jquery.inputmask.extensions.js" type="text/javascript"></script>
         <!-- AdminLTE App -->
+
         <script src="/vendor/dist/js/app.min.js" type="text/javascript"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="/vendor/dist/js/demo.js" type="text/javascript"></script>
+        <script src="/js/kenScript.js" type="text/javascript"></script>
+
     </body>
 </html>

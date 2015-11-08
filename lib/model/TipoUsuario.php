@@ -1,7 +1,5 @@
 <?php
 
-
-
 /**
  * Skeleton subclass for representing a row from the 'tipo_usuario' table.
  *
@@ -17,6 +15,23 @@
  *
  * @package    propel.generator.lib.model
  */
-class TipoUsuario extends BaseTipoUsuario
-{
+class TipoUsuario extends BaseTipoUsuario {
+
+    public function save(PropelPDO $con = null) {
+        $BitacoraCambios = new BitacoraCambios();
+        $BitacoraCambios->setModelo('Tipo de Usuario');
+        $BitacoraCambios->setIp(sfContext::getInstance()->getRequest()->getRemoteAddress());
+        if ($this->isNew()) {
+            $BitacoraCambios->setDescripcion('Creacion de Tipo de Usuario: ' . $this->getDescripcion());
+        } else {
+            $BitacoraCambios->setDescripcion('Modificacion de Tipo de Usuario: ' . $this->getDescripcion());
+        }
+        $Usuario = UsuarioQuery::create()->findOneById(sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad'));
+        if ($Usuario) {
+            $BitacoraCambios->setCreatedBy($Usuario->getUsuario());
+        }
+        $BitacoraCambios->save();
+        return parent::save($con);
+    }
+
 }

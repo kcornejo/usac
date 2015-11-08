@@ -1,7 +1,5 @@
 <?php
 
-
-
 /**
  * Skeleton subclass for representing a row from the 'usuario' table.
  *
@@ -17,27 +15,33 @@
  *
  * @package    propel.generator.lib.model
  */
-class Usuario extends BaseUsuario
-{
- 
-  public function save(PropelPDO $con = null)
- {
-   if ($this->isNew()) {
-     $clave = $this->getClave();
-     $this->setClave(sha1($clave));
-   } else {
-    $clave = $this->getClave();
-    $this->setClave($clave);
-   // sfContext::getInstance()->getLogger()->log("VelNot CLAVE ".$clave);
-   }
-   
-   return parent::save($con);
- }
- 
-  public function getDetalleCompleto() {
+class Usuario extends BaseUsuario {
 
-  $msg =$this->getUsuario()." | ".$this->getNombre()." ".$this->getApellido();
-  return $msg;
- }
- 
+    public function save(PropelPDO $con = null) {
+        $BitacoraCambios = new BitacoraCambios();
+        $BitacoraCambios->setModelo('Usuario');
+        $BitacoraCambios->setIp(sfContext::getInstance()->getRequest()->getRemoteAddress());
+        if ($this->isNew()) {
+            $clave = $this->getClave();
+            $this->setClave(sha1($clave));
+            $BitacoraCambios->setDescripcion('Creacion de Usuario: ' . $this->getUsuario());
+        } else {
+            $clave = $this->getClave();
+            $this->setClave($clave);
+            $BitacoraCambios->setDescripcion('Modificacion de Usuario: ' . $this->getUsuario());
+        }
+        $Usuario = UsuarioQuery::create()->findOneById(sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad'));
+        if ($Usuario) {
+            $BitacoraCambios->setCreatedBy($Usuario->getUsuario());
+        }
+        $BitacoraCambios->save();
+        return parent::save($con);
+    }
+
+    public function getDetalleCompleto() {
+
+        $msg = $this->getUsuario() . " | " . $this->getNombre() . " " . $this->getApellido();
+        return $msg;
+    }
+
 }

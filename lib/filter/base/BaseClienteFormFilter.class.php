@@ -18,6 +18,7 @@ abstract class BaseClienteFormFilter extends BaseFormFilterPropel
       'telefono'    => new sfWidgetFormFilterInput(),
       'ciudad'      => new sfWidgetFormFilterInput(),
       'observacion' => new sfWidgetFormFilterInput(),
+      'puntos'      => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
@@ -27,6 +28,7 @@ abstract class BaseClienteFormFilter extends BaseFormFilterPropel
       'telefono'    => new sfValidatorPass(array('required' => false)),
       'ciudad'      => new sfValidatorPass(array('required' => false)),
       'observacion' => new sfValidatorPass(array('required' => false)),
+      'puntos'      => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
     ));
 
     $this->widgetSchema->setNameFormat('cliente_filters[%s]');
@@ -51,6 +53,7 @@ abstract class BaseClienteFormFilter extends BaseFormFilterPropel
       'telefono'    => 'Text',
       'ciudad'      => 'Text',
       'observacion' => 'Text',
+      'puntos'      => 'Number',
     );
   }
 }

@@ -24,7 +24,6 @@ class seguridadActions extends sfActions {
      * @param sfRequest $request A request object
      */
     public function executeIndex(sfWebRequest $request) {
-        // KENY TUX
         $this->forward('default', 'module');
     }
 

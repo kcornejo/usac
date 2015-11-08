@@ -3,7 +3,7 @@
 
 [?php include_partial('<?php echo $this->getModuleName() ?>/flashes') ?]
  
-<div class="panel panel-piluku">
+<div class="panel panel-warning">
     <div class="panel-heading bg-yellow2">
         <h3 class='panel-title'>[?php echo <?php echo $this->getI18NString('edit.title') ?> ?]</h3>
     </div>

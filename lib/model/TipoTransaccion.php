@@ -1,7 +1,5 @@
 <?php
 
-
-
 /**
  * Skeleton subclass for representing a row from the 'tipo_transaccion' table.
  *
@@ -17,6 +15,23 @@
  *
  * @package    propel.generator.lib.model
  */
-class TipoTransaccion extends BaseTipoTransaccion
-{
+class TipoTransaccion extends BaseTipoTransaccion {
+
+    public function save(PropelPDO $con = null) {
+        $BitacoraCambios = new BitacoraCambios();
+        $BitacoraCambios->setModelo('Tipo de Transaccion');
+        $BitacoraCambios->setIp(sfContext::getInstance()->getRequest()->getRemoteAddress());
+        if ($this->isNew()) {
+            $BitacoraCambios->setDescripcion('Creacion de Tipo de Transaccion: ' . $this->getDescripcion());
+        } else {
+            $BitacoraCambios->setDescripcion('Modificacion de Tipo de Transaccion: ' . $this->getDescripcion());
+        }
+        $Usuario = UsuarioQuery::create()->findOneById(sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad'));
+        if ($Usuario) {
+            $BitacoraCambios->setCreatedBy($Usuario->getUsuario());
+        }
+        $BitacoraCambios->save();
+        return parent::save($con);
+    }
+
 }

@@ -1,7 +1,5 @@
 <?php
 
-
-
 /**
  * Skeleton subclass for representing a row from the 'cliente' table.
  *
@@ -17,6 +15,23 @@
  *
  * @package    propel.generator.lib.model
  */
-class Cliente extends BaseCliente
-{
+class Cliente extends BaseCliente {
+
+    public function save(PropelPDO $con = null) {
+        $BitacoraCambios = new BitacoraCambios();
+        $BitacoraCambios->setModelo('Cliente');
+        $BitacoraCambios->setIp(sfContext::getInstance()->getRequest()->getRemoteAddress());
+        if ($this->isNew()) {
+            $BitacoraCambios->setDescripcion('Creacion de Cliente: ' . $this->getNombre());
+        } else {
+            $BitacoraCambios->setDescripcion('Modificacion de Cliente: ' . $this->getNombre());
+        }
+        $Usuario = UsuarioQuery::create()->findOneById(sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad'));
+        if ($Usuario) {
+            $BitacoraCambios->setCreatedBy($Usuario->getUsuario());
+        }
+        $BitacoraCambios->save();
+        return parent::save($con);
+    }
+
 }
