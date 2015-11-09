@@ -1,3 +1,21 @@
+menu:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                menu
+    module:               menu
+    prefix_path:          /menu
+    column:               id
+    with_wildcard_routes: true
+
+perfil:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                perfil
+    module:               perfil
+    prefix_path:          /perfil
+    column:               id
+    with_wildcard_routes: true
+
 tipo_presentacion:
   class: sfPropelORMRouteCollection
   options:

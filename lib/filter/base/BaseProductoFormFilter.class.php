@@ -17,6 +17,10 @@ abstract class BaseProductoFormFilter extends BaseFormFilterPropel
       'tipo_producto_id'     => new sfWidgetFormPropelChoice(array('model' => 'TipoProducto', 'add_empty' => true)),
       'tipo_presentacion_id' => new sfWidgetFormPropelChoice(array('model' => 'TipoPresentacion', 'add_empty' => true)),
       'cantidad_minima'      => new sfWidgetFormFilterInput(),
+      'imagen'               => new sfWidgetFormFilterInput(),
+      'codigo'               => new sfWidgetFormFilterInput(),
+      'precio'               => new sfWidgetFormFilterInput(),
+      'costo'                => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
@@ -25,6 +29,10 @@ abstract class BaseProductoFormFilter extends BaseFormFilterPropel
       'tipo_producto_id'     => new sfValidatorPropelChoice(array('required' => false, 'model' => 'TipoProducto', 'column' => 'id')),
       'tipo_presentacion_id' => new sfValidatorPropelChoice(array('required' => false, 'model' => 'TipoPresentacion', 'column' => 'id')),
       'cantidad_minima'      => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'imagen'               => new sfValidatorPass(array('required' => false)),
+      'codigo'               => new sfValidatorPass(array('required' => false)),
+      'precio'               => new sfValidatorSchemaFilter('text', new sfValidatorNumber(array('required' => false))),
+      'costo'                => new sfValidatorSchemaFilter('text', new sfValidatorNumber(array('required' => false))),
     ));
 
     $this->widgetSchema->setNameFormat('producto_filters[%s]');
@@ -48,6 +56,10 @@ abstract class BaseProductoFormFilter extends BaseFormFilterPropel
       'tipo_producto_id'     => 'ForeignKey',
       'tipo_presentacion_id' => 'ForeignKey',
       'cantidad_minima'      => 'Number',
+      'imagen'               => 'Text',
+      'codigo'               => 'Text',
+      'precio'               => 'Number',
+      'costo'                => 'Number',
     );
   }
 }

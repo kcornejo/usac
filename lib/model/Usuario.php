@@ -44,4 +44,42 @@ class Usuario extends BaseUsuario {
         return $msg;
     }
 
+    static function generaArbol($id) {
+        $html = '';
+        $Menu = MenuQuery::create()
+                ->orderByOrden()
+                ->where("superior IS NULL or superior = ''")
+                ->usePerfilMenuQuery()
+                ->usePerfilQuery()
+                ->useUsuarioQuery()
+                ->filterById($id)
+                ->endUse()
+                ->endUse()
+                ->endUse()
+                ->find();
+        foreach ($Menu as $fila) {
+            $html .= '<li class="dropdown">';
+            $Detalle = MenuQuery::create()->filterBySuperior($fila->getId())->orderByOrden()->find();
+            if (sizeof($Detalle) > 0) {
+                $html .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown">' . $fila->getDescripcion() . ' <span class="caret"></span></a>';
+                $html .= '<ul class="dropdown-menu" role="menu">';
+            } else {
+                $html .= '<a href="' . sfContext::getInstance()->getController()->genUrl($fila->getModulo() . '/' . $fila->getAccion()) . '">' . $fila->getDescripcion() . ' <span class="caret"></span></a>';
+            }
+            foreach ($Detalle as $d) {
+                sfContext::getInstance()->getUser()->addCredential($d->getModulo());
+                $html .='<li class="">';
+                $html.='<a href="' . sfContext::getInstance()->getController()->genUrl($d->getModulo() . '/' . $d->getAccion()) . '">';
+                $html .='<i class="' . $d->getIcono() . '"></i> <span>' . $d->getDescripcion() . '</span>';
+                $html .='</a>';
+                $html .= '</li>';
+            }
+            if (sizeof($Detalle) > 0) {
+                $html .= '</ul>';
+            }
+            $html .='</li>';
+        }
+        return $html;
+    }
+
 }

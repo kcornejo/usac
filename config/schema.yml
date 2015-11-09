@@ -126,6 +126,9 @@ propel:
         total:                             { type: double}
         tipo_pago_id:                           ~
         activo:                            { type: boolean, default: true}
+        fecha:                             { type: varchar(32)}
+        serie:                             { type: varchar(100)}
+        documento:                         { type: varchar(100)}
     factura_detalle:
         id:            ~
         factura_id:    ~
