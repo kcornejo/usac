@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
-        <title>USAC</title>
-        <!-- Tell the browser to be responsive to screen width -->
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <!-- Bootstrap 3.3.4 -->
-        <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <!-- Font Awesome Icons -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Farmacia Integral</title>
+
+        <meta name="description" content="Source code generated using layoutit.com">
+        <meta name="author" content="LayoutIt!">
+
+
+        <link href="/web/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <!-- Ionicons -->
         <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
-        <!-- Theme style -->
-        <link href="/vendor/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
-        <!-- AdminLTE Skins. Choose a skin from the css/skins
-             folder instead of downloading all of them to reduce the load. -->
-        <link href="/vendor/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
-        <link href="/css/kenStyle.css" rel="stylesheet" type="text/css" />
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
+        <link href="/web/vendor/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+        <link href="/web/vendor/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
+        <link href="/web/vendor/plugins/iCheck/flat/blue.css" rel="stylesheet" type="text/css" />
+        <link href="/web/vendor/plugins/morris/morris.css" rel="stylesheet" type="text/css" />
+        <link href="/web/vendor/plugins/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
+        <link href="/web/vendor/plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
+        <link href="/web/vendor/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+        <link href="/web/vendor/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
+        <script src="/web/js/scripts.js"></script>
+
     </head>
     <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
     <body class="skin-blue layout-top-nav">
@@ -34,7 +36,7 @@
                         <div class="navbar-header">
 
                             <a href="<?php echo url_for('inicio/index') ?>" class="navbar-brand">
-                                <img src="/vendor/dist/img/logo_farmacia.png" style="width:60px;margin-top:-5px"/>
+                                <img src="/web/vendor/dist/img/logo_farmacia.png" style="width:60px;margin-top:-5px"/>
                             </a>
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
                                 <i class="fa fa-bars"></i>
@@ -55,7 +57,7 @@
                                     <!-- Menu Toggle Button -->
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                         <!-- The user image in the navbar-->
-                                        <img src="/vendor/dist/img/avatar5.png" class="user-image" alt="User Image" />
+                                        <img src="/web/vendor/dist/img/avatar5.png" class="user-image" alt="User Image" />
                                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
                                         <span class="hidden-xs"><?php echo sfContext::getInstance()->getUser()->getAttribute('usuarioNombre', null, 'seguridad') ?></span>
                                     </a>
@@ -96,28 +98,30 @@
                     <div class="pull-right hidden-xs">
                         <b>Version</b> 2.2.0
                     </div>
-                    <strong>Copyright &copy; 2014-2015 USAC.</strong>
+                    <strong>Copyright &copy; 2014-2015 Farmacia Salud Integral.</strong>
                 </div><!-- /.container -->
             </footer>
         </div><!-- ./wrapper -->
 
-        <!-- jQuery 2.1.4 -->
-        <script src="/vendor/plugins/jQuery/jQuery-2.1.4.min.js" type="text/javascript"></script>
-        <!-- Bootstrap 3.3.2 JS -->
-        <script src="/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        <!-- SlimScroll -->
-        <script src="/vendor/plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-        <!-- FastClick -->
-        <script src="/vendor/plugins/fastclick/fastclick.min.js" type="text/javascript"></script>
-        <script src="/vendor/plugins/input-mask/jquery.inputmask.js" type="text/javascript"></script>
-        <script src="/vendor/plugins/input-mask/jquery.inputmask.date.extensions.js" type="text/javascript"></script>
-        <script src="/vendor/plugins/input-mask/jquery.inputmask.extensions.js" type="text/javascript"></script>
-        <!-- AdminLTE App -->
-
-        <script src="/vendor/dist/js/app.min.js" type="text/javascript"></script>
-        <!-- AdminLTE for demo purposes -->
-        <script src="/vendor/dist/js/demo.js" type="text/javascript"></script>
-        <script src="/js/kenScript.js" type="text/javascript"></script>
-
+                        
+        <script src="/web/vendor/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $.widget.bridge('uibutton', $.ui.button);
+        </script>
+        <script src="/web/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+        <script src="/web/vendor/plugins/sparkline/jquery.sparkline.min.js" type="text/javascript"></script>
+        <script src="/web/vendor/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js" type="text/javascript"></script>
+        <script src="/web/vendor/plugins/jvectormap/jquery-jvectormap-world-mill-en.js" type="text/javascript"></script>
+        <script src="/web/vendor/plugins/knob/jquery.knob.js" type="text/javascript"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js" type="text/javascript"></script>
+        <script src="/web/vendor/plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
+        <script src="/web/vendor/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
+        <script src="/web/vendor/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" type="text/javascript"></script>
+        <script src="/web/vendor/plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+        <script src="/web/vendor/plugins/fastclick/fastclick.min.js" type="text/javascript"></script>
+        <script src="/web/vendor/dist/js/app.min.js" type="text/javascript"></script>
+        <script src="/web/vendor/dist/js/demo.js" type="text/javascript"></script>
     </body>
 </html>
