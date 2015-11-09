@@ -23,7 +23,7 @@
         <link href="/web/vendor/plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
         <link href="/web/vendor/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
         <link href="/web/vendor/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
-        <script src="/web/js/scripts.js"></script>
+        <link href="/css/kenStyle.css" rel="stylesheet" type="text/css" />
 
     </head>
     <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
@@ -103,7 +103,7 @@
             </footer>
         </div><!-- ./wrapper -->
 
-                        
+
         <script src="/web/vendor/plugins/jQuery/jQuery-2.1.4.min.js"></script>
         <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
         <script type="text/javascript">
@@ -121,7 +121,11 @@
         <script src="/web/vendor/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" type="text/javascript"></script>
         <script src="/web/vendor/plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
         <script src="/web/vendor/plugins/fastclick/fastclick.min.js" type="text/javascript"></script>
+        <script src="/web/vendor/plugins/input-mask/jquery.inputmask.js" type="text/javascript"></script>
+        <script src="/web/vendor/plugins/input-mask/jquery.inputmask.date.extensions.js" type="text/javascript"></script>
+        <script src="/web/vendor/plugins/input-mask/jquery.inputmask.extensions.js" type="text/javascript"></script>
         <script src="/web/vendor/dist/js/app.min.js" type="text/javascript"></script>
         <script src="/web/vendor/dist/js/demo.js" type="text/javascript"></script>
+        <script src="/web/js/kenScript.js" type="text/javascript"></script>
     </body>
 </html>
