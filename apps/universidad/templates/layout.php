@@ -83,6 +83,11 @@
                                             </a>
                                         </li>
                                         <li class="">
+                                            <a href="<?php echo url_for('tipo_presentacion/index') ?>">
+                                                <i class="fa fa-check"></i> <span>Tipo de Presentacion</span> 
+                                            </a>
+                                        </li>
+                                        <li class="">
                                             <a href="<?php echo url_for('tipo_transaccion/index') ?>">
                                                 <i class="fa fa-check"></i> <span>Tipo de Transaccion</span> 
                                             </a>
@@ -110,11 +115,16 @@
                                     </ul>
                                 </li>
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Registro <span class="caret"></span></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportes <span class="caret"></span></a>
                                     <ul class="dropdown-menu" role="menu">
                                         <li class="">
                                             <a href="<?php echo url_for('bitacora_cambios/index') ?>">
                                                 <i class="fa fa-book"></i> <span>Bitacora de Cambios</span> 
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="<?php echo url_for('reporte/index') ?>">
+                                                <i class="fa fa-print"></i> <span>Reportes</span> 
                                             </a>
                                         </li>
                                     </ul>

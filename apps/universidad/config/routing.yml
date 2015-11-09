@@ -1,3 +1,12 @@
+tipo_presentacion:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                tipoPresentacion
+    module:               tipo_presentacion
+    prefix_path:          /tipo_presentacion
+    column:               id
+    with_wildcard_routes: true
+
 producto:
   class: sfPropelORMRouteCollection
   options:

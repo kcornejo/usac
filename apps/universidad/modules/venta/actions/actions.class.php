@@ -120,6 +120,22 @@ class ventaActions extends sfActions {
 
     public function executeConfirmar(sfWebRequest $request) {
         $Factura = FacturaQuery::create()->findOneById($request->getParameter('id'));
+        if ($Factura->getActivo()) {
+            $BitacoraCambios = new BitacoraCambios();
+            $BitacoraCambios->setModelo('Factura');
+            $BitacoraCambios->setIp(sfContext::getInstance()->getRequest()->getRemoteAddress());
+            $BitacoraCambios->setDescripcion('Creacion de Factura con id: ' . sprintf("%05d", $Factura->getId()));
+            $Usuario = UsuarioQuery::create()->findOneById(sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad'));
+            if ($Usuario) {
+                $BitacoraCambios->setCreatedBy($Usuario->getUsuario());
+            }
+            $BitacoraCambios->save();
+            $Cliente = ClienteQuery::create()->findOneById($Factura->getClienteId());
+            if (Factura::obtenerTotal($request->getParameter('id')) >= 200) {
+                $Cliente->setPuntos($Cliente->getPuntos() + 10);
+                $Cliente->save();
+            }
+        }
         $Factura->setActivo(false);
         $Factura->save();
         $pdf = new sfTCPDF("P", "mm", "Letter");
@@ -149,7 +165,7 @@ class ventaActions extends sfActions {
         $detalles = FacturaDetalleQuery::create()->findByFacturaId($Factura->getId());
         $html = $this->getPartial('venta/soporteTabla', array("factura" => $Factura, "detalles" => $detalles));
         $pdf->writeHTML($html);
-        $pdf->Output('Factura.pdf', 'I');
+        $pdf->Output('Factura.pdf', 'D');
     }
 
 }
