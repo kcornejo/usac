@@ -27,9 +27,13 @@
     <body class="hold-transition login-page">
         <div class="login-box">
             <div class="login-logo">
-                <img src="/vendor/dist/img/logo_farmacia.png" style="width:200px;margin-top:-5px"/>
+
             </div><!-- /.login-logo -->
             <div class="login-box-body">
+                <center>
+                    <img src="/vendor/dist/img/logo_farmacia.png" style="width:300px;margin-top:-5px"/>
+                    <hr/>
+                </center>
                 <p class="login-box-msg">Ingresa tus credenciales</p>
                 <?php if ($form['clave']->getError()): ?>
                     <p class="login-box-msg" style="color:red">Credenciales incorrectas</p>

@@ -40,7 +40,6 @@ class seguridadActions extends sfActions {
                 $user->setAuthenticated(true);
                 $valido = $this->getUser()->getAttribute('usuario', null, 'seguridad');
                 $usuario = UsuarioQuery::create()->findOneById($valido);
-                $this->getUser()->setAttribute('usuario', false, 'administrador');
                 $valores = $this->form->getValues();
                 $this->redirect("@homepage");
             }
@@ -64,6 +63,11 @@ class seguridadActions extends sfActions {
                 $this->redirect("seguridad/cambioclave");
             }
         }
+    }
+
+    public function executeError(sfWebRequest $request) {
+        $this->getUser()->setFlash('error', 'Sin permisos suficientes.');
+        $this->redirect('inicio/index');
     }
 
 }

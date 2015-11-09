@@ -16,11 +16,11 @@ generator:
       fields:  ~
       list:
         title:             Listado de Usuarios
-        display:           [usuario,  nombre, apellido, administrador]
+        display:           [usuario,  nombre, apellido, perfil]
       filter:
-         display:           [usuario,  nombre, apellido, administrador]
+         display:           [usuario,  nombre, apellido, perfil_id]
       form:
-        display:           [usuario, clave, nombre, apellido, administrador]
+        display:           [usuario, clave, nombre,apellido, perfil_id]
       edit:
         title:           Editar Usuario
       new:

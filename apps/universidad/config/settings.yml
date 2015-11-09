@@ -41,6 +41,7 @@ all:
   .actions:
     login_module:           seguridad
     login_action:           login
-    
+    secure_module:          seguridad
+    secure_action:          error
     error_404_module:       inicio
     error_404_action:       error404

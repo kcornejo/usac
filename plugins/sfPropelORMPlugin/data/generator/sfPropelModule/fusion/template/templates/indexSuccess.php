@@ -1,8 +1,6 @@
 [?php use_helper('I18N', 'Date') ?]
 [?php include_partial('<?php echo $this->getModuleName() ?>/assets') ?]
 
-[?php include_partial('<?php echo $this->getModuleName() ?>/flashes') ?]
-
 <div class="panel panel-info">
     <div class="panel-heading">
         <h3 class="panel-title"><i class="icon-reorder"></i>[?php echo <?php echo $this->getI18NString('list.title') ?> ?]</h3>
@@ -19,9 +17,11 @@
 
                 <div class="tab-content">
                     <div class="tab-pane" id="tab-filtro">
+                        <br/>
                         [?php include_partial('<?php echo $this->getModuleName() ?>/filters', array('form' => $filters, 'configuration' => $configuration)) ?]
                     </div>
                     <div class="tab-pane active" id="tab-listado">
+                        <br/>
                     <?php endif; ?>
 
 
