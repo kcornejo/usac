@@ -5,23 +5,23 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>USAC</title>
+        <title>Farmacia Integral</title>
 
         <meta name="description" content="Source code generated using layoutit.com">
         <meta name="author" content="LayoutIt!">
 
 
-        <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="/web/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
-        <link href="/vendor/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
-        <link href="/vendor/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
-        <link href="/vendor/plugins/iCheck/flat/blue.css" rel="stylesheet" type="text/css" />
-        <link href="/vendor/plugins/morris/morris.css" rel="stylesheet" type="text/css" />
-        <link href="/vendor/plugins/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
-        <link href="/vendor/plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
-        <link href="/vendor/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
-        <link href="/vendor/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
+        <link href="/web/vendor/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+        <link href="/web/vendor/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
+        <link href="/web/vendor/plugins/iCheck/flat/blue.css" rel="stylesheet" type="text/css" />
+        <link href="/web/vendor/plugins/morris/morris.css" rel="stylesheet" type="text/css" />
+        <link href="/web/vendor/plugins/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
+        <link href="/web/vendor/plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
+        <link href="/web/vendor/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+        <link href="/web/vendor/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
         <script src="js/scripts.js"></script>
 
     </head>
@@ -31,8 +31,8 @@
             <header class="main-header">
                 <!-- Logo -->
                 <a href="index2.html" class="logo">
-                    <span class="logo-mini"><b>USAC</b></span>
-                    <span class="logo-lg"><b>USAC</b></span>
+                    <span class="logo-mini"><b>Farmacia Integral</b></span>
+                    <span class="logo-lg"><b>Farmacia Integral</b></span>
                 </a>
                 <nav class="navbar navbar-static-top" role="navigation">
                     <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
@@ -51,7 +51,7 @@
                 <section class="sidebar">
                     <div class="user-panel">
                         <div class="pull-left image">
-                            <img src="/vendor/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+                            <img src="/web/vendor/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
                         </div>
                         <div class="pull-left info">
                             <p>Usuario</p>
@@ -277,24 +277,24 @@
             </aside>
             <div class="control-sidebar-bg"></div>
         </div>
-        <script src="/vendor/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+        <script src="/web/vendor/plugins/jQuery/jQuery-2.1.4.min.js"></script>
         <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
         <script type="text/javascript">
             $.widget.bridge('uibutton', $.ui.button);
         </script>
-        <script src="/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="/web/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-        <script src="/vendor/plugins/sparkline/jquery.sparkline.min.js" type="text/javascript"></script>
-        <script src="/vendor/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js" type="text/javascript"></script>
-        <script src="/vendor/plugins/jvectormap/jquery-jvectormap-world-mill-en.js" type="text/javascript"></script>
-        <script src="/vendor/plugins/knob/jquery.knob.js" type="text/javascript"></script>
+        <script src="/web/vendor/plugins/sparkline/jquery.sparkline.min.js" type="text/javascript"></script>
+        <script src="/web/vendor/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js" type="text/javascript"></script>
+        <script src="/web/vendor/plugins/jvectormap/jquery-jvectormap-world-mill-en.js" type="text/javascript"></script>
+        <script src="/web/vendor/plugins/knob/jquery.knob.js" type="text/javascript"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js" type="text/javascript"></script>
-        <script src="/vendor/plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
-        <script src="/vendor/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
-        <script src="/vendor/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" type="text/javascript"></script>
-        <script src="/vendor/plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-        <script src="/vendor/plugins/fastclick/fastclick.min.js" type="text/javascript"></script>
-        <script src="/vendor/dist/js/app.min.js" type="text/javascript"></script>
-        <script src="/vendor/dist/js/demo.js" type="text/javascript"></script>
+        <script src="/web/vendor/plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
+        <script src="/web/vendor/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
+        <script src="/web/vendor/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" type="text/javascript"></script>
+        <script src="/web/vendor/plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+        <script src="/web/vendor/plugins/fastclick/fastclick.min.js" type="text/javascript"></script>
+        <script src="/web/vendor/dist/js/app.min.js" type="text/javascript"></script>
+        <script src="/web/vendor/dist/js/demo.js" type="text/javascript"></script>
     </body>
 </html>
