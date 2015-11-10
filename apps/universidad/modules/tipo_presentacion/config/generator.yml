@@ -1,0 +1,27 @@
+generator:
+  class: sfPropelGenerator
+  param:
+    model_class:           tipoPresentacion
+    theme:                 fusion
+    non_verbose_templates: true
+    with_show:             false
+    singular:              tipoPresentacion
+    plural:                tipoPresentacions
+    route_prefix:          tipo_presentacion
+    with_propel_route:     1
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        display:           [descripcion]
+        title:             Listado de Tipos de Presentacion
+      filter:
+        display:           [descripcion]
+      form:
+        display:           [descripcion]
+      edit:
+        title:             Editar Tipo de Presentacion
+      new:
+        title:             Nuevo Tipo de Presentacion

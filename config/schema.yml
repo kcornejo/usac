@@ -95,6 +95,8 @@ propel:
         descripcion:                         { type: varchar, required: true, primaryString: true }
         marca_id:     ~
         tipo_producto_id: ~
+        tipo_presentacion_id:                ~
+        cantidad_minima:                     { type: integer, default: 20}
     inventario:
         id:            ~
         producto_id:   ~
@@ -127,6 +129,13 @@ propel:
         modelo:      { type: varchar}
         descripcion:  { type: varchar}
         ip:           { type: varchar}
+        created_at:                        ~
+        updated_at:                        ~
+        created_by:                        { type: varchar(32) }
+        updated_by:                        { type: varchar(32) }
+    tipo_presentacion:
+        id:  ~
+        descripcion:            { type: varchar(250), primaryString: true }
         created_at:                        ~
         updated_at:                        ~
         created_by:                        { type: varchar(32) }
