@@ -12,3 +12,9 @@ root {
 .input-medium{
     width: 50%;
 }
+.input-large{
+    width: 75%;
+}
+.input-xlarge{
+    width: 100%;
+}

@@ -1,7 +1,5 @@
 [?php use_helper('I18N', 'Date') ?]
 [?php include_partial('<?php echo $this->getModuleName() ?>/assets') ?]
-
-[?php include_partial('<?php echo $this->getModuleName() ?>/flashes') ?]
  
 <div class="panel panel-warning">
     <div class="panel-heading bg-yellow2">

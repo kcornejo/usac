@@ -13,14 +13,19 @@ generator:
 
     config:
       actions: ~
-      fields:  ~
+      fields:
+        cantidad_minima:   
+          label:           Existencia Minima
+        imagen:
+          label:           Imagen
+          
       list:
-        display:           [descripcion, marca, tipo_producto, tipo_presentacion,cantidad_minima]
+        display:           [descripcion, marca,_foto, tipo_producto, tipo_presentacion,cantidad_minima, costo, precio]
         title:             Listado de Productos
       filter:
         display:           [descripcion, marca_id, tipo_producto_id]
       form: 
-        display:           [descripcion, marca_id, tipo_producto_id, tipo_presentacion_id,cantidad_minima]
+        display:           [descripcion,imagen,_imagenFoto  , marca_id, tipo_producto_id, tipo_presentacion_id,cantidad_minima, costo, precio]
       edit:
         title:             Editar Producto
       new:

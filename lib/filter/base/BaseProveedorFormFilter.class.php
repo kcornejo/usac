@@ -19,6 +19,10 @@ abstract class BaseProveedorFormFilter extends BaseFormFilterPropel
       'telefono'          => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'ciudad'            => new sfWidgetFormFilterInput(),
       'observacion'       => new sfWidgetFormFilterInput(),
+      'nit'               => new sfWidgetFormFilterInput(),
+      'razon_social'      => new sfWidgetFormFilterInput(),
+      'contacto'          => new sfWidgetFormFilterInput(),
+      'referencia'        => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
@@ -29,6 +33,10 @@ abstract class BaseProveedorFormFilter extends BaseFormFilterPropel
       'telefono'          => new sfValidatorPass(array('required' => false)),
       'ciudad'            => new sfValidatorPass(array('required' => false)),
       'observacion'       => new sfValidatorPass(array('required' => false)),
+      'nit'               => new sfValidatorPass(array('required' => false)),
+      'razon_social'      => new sfValidatorPass(array('required' => false)),
+      'contacto'          => new sfValidatorPass(array('required' => false)),
+      'referencia'        => new sfValidatorPass(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('proveedor_filters[%s]');
@@ -54,6 +62,10 @@ abstract class BaseProveedorFormFilter extends BaseFormFilterPropel
       'telefono'          => 'Text',
       'ciudad'            => 'Text',
       'observacion'       => 'Text',
+      'nit'               => 'Text',
+      'razon_social'      => 'Text',
+      'contacto'          => 'Text',
+      'referencia'        => 'Text',
     );
   }
 }

@@ -13,14 +13,18 @@ generator:
 
     config:
       actions: ~
-      fields:  ~
+      fields:
+        direccion:         
+          label:          Dirección
+        telefono:
+          label:          Teléfono
       list:
         title:             Listado de Proveedores
-        display:           [nombre, direccion, telefono, ciudad]
+        display:           [nombre, direccion, telefono, ciudad, nit, razon_social]
       filter:
-        display:           [nombre, direccion, telefono, ciudad]
+        display:           [nombre, direccion, telefono, ciudad, nit, razon_social, contacto, referencia]
       form:
-        display:           [nombre, direccion, telefono, ciudad]
+        display:           [nombre, direccion, telefono, ciudad, nit, razon_social, contacto, referencia]
       edit:
         title:             Editar Proveedor
       new:

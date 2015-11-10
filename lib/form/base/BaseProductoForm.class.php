@@ -20,6 +20,10 @@ abstract class BaseProductoForm extends BaseFormPropel
       'tipo_producto_id'     => new sfWidgetFormPropelChoice(array('model' => 'TipoProducto', 'add_empty' => true)),
       'tipo_presentacion_id' => new sfWidgetFormPropelChoice(array('model' => 'TipoPresentacion', 'add_empty' => true)),
       'cantidad_minima'      => new sfWidgetFormInputText(),
+      'imagen'               => new sfWidgetFormInputText(),
+      'codigo'               => new sfWidgetFormInputText(),
+      'precio'               => new sfWidgetFormInputText(),
+      'costo'                => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
@@ -29,6 +33,10 @@ abstract class BaseProductoForm extends BaseFormPropel
       'tipo_producto_id'     => new sfValidatorPropelChoice(array('model' => 'TipoProducto', 'column' => 'id', 'required' => false)),
       'tipo_presentacion_id' => new sfValidatorPropelChoice(array('model' => 'TipoPresentacion', 'column' => 'id', 'required' => false)),
       'cantidad_minima'      => new sfValidatorInteger(array('min' => -2147483648, 'max' => 2147483647, 'required' => false)),
+      'imagen'               => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'codigo'               => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'precio'               => new sfValidatorNumber(array('required' => false)),
+      'costo'                => new sfValidatorNumber(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('producto[%s]');

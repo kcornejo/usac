@@ -22,6 +22,7 @@ abstract class BaseClienteForm extends BaseFormPropel
       'ciudad'      => new sfWidgetFormInputText(),
       'observacion' => new sfWidgetFormInputText(),
       'puntos'      => new sfWidgetFormInputText(),
+      'nit'         => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
@@ -33,6 +34,7 @@ abstract class BaseClienteForm extends BaseFormPropel
       'ciudad'      => new sfValidatorString(array('max_length' => 50, 'required' => false)),
       'observacion' => new sfValidatorString(array('max_length' => 120, 'required' => false)),
       'puntos'      => new sfValidatorInteger(array('min' => -2147483648, 'max' => 2147483647, 'required' => false)),
+      'nit'         => new sfValidatorString(array('max_length' => 120, 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('cliente[%s]');

@@ -43,7 +43,7 @@ class LoginPortalForm extends sfForm {
         $user = sfContext::getInstance()->getUser();
         $user->clearCredentials();
         if ($usuario != "" && $values['clave'] != "") {
-            
+
             $valido = UsuarioQuery::validaUsuario($usuario, $clave);
             $user = sfContext::getInstance()->getUser();
             if ($valido) {
@@ -51,6 +51,8 @@ class LoginPortalForm extends sfForm {
                 $user->setAttribute('usuario', $valido->getId(), 'seguridad');
                 sfContext::getInstance()->getUser()->setAttribute('usuario', $valido->getId(), 'seguridad');
                 $user->setAttribute('usuarioNombre', $valido->getUsuario(), 'seguridad');
+                $html = Usuario::generaArbol($valido->getId());
+                $user->setAttribute('menu', $html, 'seguridad');
             } else {
                 $msg = sfContext::getInstance()->getUser()->getFlash("login");
                 $user->setAuthenticated(false);
