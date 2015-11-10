@@ -1,5 +1,7 @@
 <?php
 
+
+
 /**
  * Skeleton subclass for representing a row from the 'producto' table.
  *
@@ -15,16 +17,6 @@
  *
  * @package    propel.generator.lib.model
  */
-class Producto extends BaseProducto {
-
-    static function obtenerExistencia($id) {
-        $Inventario = InventarioQuery::create()
-                ->findByProductoId($id);
-        $existencia = 0;
-        foreach ($Inventario as $fila) {
-            $existencia += $fila->getCantidad();
-        }
-        return $existencia;
-    }
-
+class Producto extends BaseProducto
+{
 }

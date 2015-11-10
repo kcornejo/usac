@@ -17,7 +17,7 @@ abstract class BaseDetallePedidoProveedorForm extends BaseFormPropel
       'id'                  => new sfWidgetFormInputHidden(),
       'producto_id'         => new sfWidgetFormPropelChoice(array('model' => 'Producto', 'add_empty' => true)),
       'cantidad'            => new sfWidgetFormInputText(),
-      'estado'              => new sfWidgetFormInputText(),
+      'precio'              => new sfWidgetFormInputText(),
       'pedido_proveedor_id' => new sfWidgetFormPropelChoice(array('model' => 'PedidoProveedor', 'add_empty' => true)),
     ));
 
@@ -25,7 +25,7 @@ abstract class BaseDetallePedidoProveedorForm extends BaseFormPropel
       'id'                  => new sfValidatorChoice(array('choices' => array($this->getObject()->getId()), 'empty_value' => $this->getObject()->getId(), 'required' => false)),
       'producto_id'         => new sfValidatorPropelChoice(array('model' => 'Producto', 'column' => 'id', 'required' => false)),
       'cantidad'            => new sfValidatorInteger(array('min' => -2147483648, 'max' => 2147483647, 'required' => false)),
-      'estado'              => new sfValidatorString(array('max_length' => 20)),
+      'precio'              => new sfValidatorString(array('max_length' => 20)),
       'pedido_proveedor_id' => new sfValidatorPropelChoice(array('model' => 'PedidoProveedor', 'column' => 'id', 'required' => false)),
     ));
 

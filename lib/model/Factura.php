@@ -1,5 +1,7 @@
 <?php
 
+
+
 /**
  * Skeleton subclass for representing a row from the 'factura' table.
  *
@@ -15,15 +17,6 @@
  *
  * @package    propel.generator.lib.model
  */
-class Factura extends BaseFactura {
-
-    static function obtenerTotal($id) {
-        $total = 0;
-        $Detalles = FacturaDetalleQuery::create()->findByFacturaId($id);
-        foreach ($Detalles as $detalle) {
-            $total +=( $detalle->getPrecioUnitario() * $detalle->getCantidad());
-        }
-        return $total;
-    }
-
+class Factura extends BaseFactura
+{
 }

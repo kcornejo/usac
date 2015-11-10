@@ -2,10 +2,10 @@
 
 /**
  * Data object containing the SQL and PHP code to migrate the database
- * up to version 1446919535.
- * Generated on 2015-11-07 19:05:35 
+ * up to version 1447134521.
+ * Generated on 2015-11-10 06:48:41 
  */
-class PropelMigration_1446919535
+class PropelMigration_1447134521
 {
 
     public function preUp($manager)
@@ -42,23 +42,32 @@ class PropelMigration_1446919535
 # It "suspends judgement" for fkey relationships until are tables are set.
 SET FOREIGN_KEY_CHECKS = 0;
 
-DROP TABLE IF EXISTS `jugador`;
-
-DROP TABLE IF EXISTS `jugador_mesa`;
-
-DROP TABLE IF EXISTS `mesa`;
-
-DROP TABLE IF EXISTS `turno`;
+CREATE TABLE `usuario`
+(
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `usuario` VARCHAR(32) NOT NULL,
+    `clave` VARCHAR(40),
+    `nombre` VARCHAR(60) NOT NULL,
+    `apellido` VARCHAR(60) NOT NULL,
+    `administrador` TINYINT(1) DEFAULT 0,
+    `created_at` DATETIME,
+    `updated_at` DATETIME,
+    `created_by` VARCHAR(32),
+    `updated_by` VARCHAR(32),
+    PRIMARY KEY (`id`),
+    UNIQUE INDEX `llave` (`usuario`)
+) ENGINE=InnoDB;
 
 CREATE TABLE `cliente`
 (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `nombre` VARCHAR(70) NOT NULL,
+    `nombre` VARCHAR(255) NOT NULL,
     `correo` VARCHAR(70),
     `direccion` VARCHAR(100),
     `telefono` VARCHAR(100),
     `ciudad` VARCHAR(50),
     `observacion` VARCHAR(120),
+    `puntos` INTEGER DEFAULT 0,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
@@ -83,7 +92,7 @@ CREATE TABLE `detalle_pedido_proveedor`
 CREATE TABLE `marca`
 (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `nombre` VARCHAR(30) NOT NULL,
+    `nombre` VARCHAR(255) NOT NULL,
     `descripcion` VARCHAR(60),
     `created_at` DATETIME,
     `updated_at` DATETIME,
@@ -131,7 +140,7 @@ CREATE TABLE `promocion`
 CREATE TABLE `proveedor`
 (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `nombre` VARCHAR(70) NOT NULL,
+    `nombre` VARCHAR(255) NOT NULL,
     `direccion` VARCHAR(70) NOT NULL,
     `correo_eletronico` VARCHAR(70) NOT NULL,
     `nombre_contacto` VARCHAR(70),
@@ -144,7 +153,7 @@ CREATE TABLE `proveedor`
 CREATE TABLE `tipo_pago`
 (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `nombre` VARCHAR(30) NOT NULL,
+    `nombre` VARCHAR(255) NOT NULL,
     `descripcion` VARCHAR(70),
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
@@ -152,7 +161,7 @@ CREATE TABLE `tipo_pago`
 CREATE TABLE `tipo_producto`
 (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `nombre` VARCHAR(70) NOT NULL,
+    `nombre` VARCHAR(255) NOT NULL,
     `descripcion` VARCHAR(120),
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
@@ -171,7 +180,7 @@ CREATE TABLE `tipo_transaccion`
 CREATE TABLE `tipo_usuario`
 (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `nombre` VARCHAR(30) NOT NULL,
+    `nombre` VARCHAR(255) NOT NULL,
     `descripcion` VARCHAR(120),
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
@@ -210,14 +219,91 @@ CREATE TABLE `transaccion`
 CREATE TABLE `producto`
 (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `descripcion` VARCHAR(255),
-    `precio` DOUBLE,
+    `descripcion` VARCHAR(255) NOT NULL,
     `marca_id` INTEGER,
+    `tipo_producto_id` INTEGER,
+    `tipo_presentacion_id` INTEGER,
+    `cantidad_minima` INTEGER DEFAULT 20,
     PRIMARY KEY (`id`),
     INDEX `producto_FI_1` (`marca_id`),
+    INDEX `producto_FI_2` (`tipo_producto_id`),
+    INDEX `producto_FI_3` (`tipo_presentacion_id`),
     CONSTRAINT `producto_FK_1`
         FOREIGN KEY (`marca_id`)
-        REFERENCES `marca` (`id`)
+        REFERENCES `marca` (`id`),
+    CONSTRAINT `producto_FK_2`
+        FOREIGN KEY (`tipo_producto_id`)
+        REFERENCES `tipo_producto` (`id`),
+    CONSTRAINT `producto_FK_3`
+        FOREIGN KEY (`tipo_presentacion_id`)
+        REFERENCES `tipo_presentacion` (`id`)
+) ENGINE=InnoDB;
+
+CREATE TABLE `inventario`
+(
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `producto_id` INTEGER,
+    `cantidad` INTEGER,
+    `precio_compra` DOUBLE,
+    `proveedor_id` INTEGER,
+    `created_at` DATETIME,
+    `updated_at` DATETIME,
+    `created_by` VARCHAR(32),
+    `updated_by` VARCHAR(32),
+    PRIMARY KEY (`id`),
+    INDEX `inventario_FI_1` (`producto_id`),
+    INDEX `inventario_FI_2` (`proveedor_id`),
+    CONSTRAINT `inventario_FK_1`
+        FOREIGN KEY (`producto_id`)
+        REFERENCES `producto` (`id`),
+    CONSTRAINT `inventario_FK_2`
+        FOREIGN KEY (`proveedor_id`)
+        REFERENCES `proveedor` (`id`)
+) ENGINE=InnoDB;
+
+CREATE TABLE `factura`
+(
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `cliente_id` INTEGER,
+    `created_at` DATETIME,
+    `updated_at` DATETIME,
+    `created_by` VARCHAR(32),
+    `updated_by` VARCHAR(32),
+    `total` DOUBLE,
+    `tipo_pago_id` INTEGER,
+    `activo` TINYINT(1) DEFAULT 1,
+    PRIMARY KEY (`id`),
+    INDEX `factura_FI_1` (`cliente_id`),
+    INDEX `factura_FI_2` (`tipo_pago_id`),
+    CONSTRAINT `factura_FK_1`
+        FOREIGN KEY (`cliente_id`)
+        REFERENCES `cliente` (`id`),
+    CONSTRAINT `factura_FK_2`
+        FOREIGN KEY (`tipo_pago_id`)
+        REFERENCES `tipo_pago` (`id`)
+) ENGINE=InnoDB;
+
+CREATE TABLE `factura_detalle`
+(
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `factura_id` INTEGER,
+    `producto_id` INTEGER,
+    `proveedor_id` INTEGER,
+    `cantidad` INTEGER,
+    `precio_unitario` DOUBLE,
+    PRIMARY KEY (`id`),
+    INDEX `factura_detalle_FI_1` (`factura_id`),
+    INDEX `factura_detalle_FI_2` (`producto_id`),
+    INDEX `factura_detalle_FI_3` (`proveedor_id`),
+    CONSTRAINT `factura_detalle_FK_1`
+        FOREIGN KEY (`factura_id`)
+        REFERENCES `factura` (`id`),
+    CONSTRAINT `factura_detalle_FK_2`
+        FOREIGN KEY (`producto_id`)
+        REFERENCES `producto` (`id`),
+    CONSTRAINT `factura_detalle_FK_3`
+        FOREIGN KEY (`proveedor_id`)
+        REFERENCES `proveedor` (`id`)
 ) ENGINE=InnoDB;
 
 CREATE TABLE `bitacora_cambios`
@@ -226,6 +312,17 @@ CREATE TABLE `bitacora_cambios`
     `modelo` VARCHAR(255),
     `descripcion` VARCHAR(255),
     `ip` VARCHAR(255),
+    `created_at` DATETIME,
+    `updated_at` DATETIME,
+    `created_by` VARCHAR(32),
+    `updated_by` VARCHAR(32),
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB;
+
+CREATE TABLE `tipo_presentacion`
+(
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `descripcion` VARCHAR(250),
     `created_at` DATETIME,
     `updated_at` DATETIME,
     `created_by` VARCHAR(32),
@@ -253,6 +350,8 @@ SET FOREIGN_KEY_CHECKS = 1;
 # It "suspends judgement" for fkey relationships until are tables are set.
 SET FOREIGN_KEY_CHECKS = 0;
 
+DROP TABLE IF EXISTS `usuario`;
+
 DROP TABLE IF EXISTS `cliente`;
 
 DROP TABLE IF EXISTS `detalle_pedido_proveedor`;
@@ -277,66 +376,15 @@ DROP TABLE IF EXISTS `transaccion`;
 
 DROP TABLE IF EXISTS `producto`;
 
+DROP TABLE IF EXISTS `inventario`;
+
+DROP TABLE IF EXISTS `factura`;
+
+DROP TABLE IF EXISTS `factura_detalle`;
+
 DROP TABLE IF EXISTS `bitacora_cambios`;
 
-CREATE TABLE `jugador`
-(
-    `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `nombre` VARCHAR(255),
-    `created_at` DATETIME,
-    `updated_at` DATETIME,
-    `created_by` VARCHAR(255),
-    `updated_by` VARCHAR(255),
-    PRIMARY KEY (`id`)
-) ENGINE=InnoDB;
-
-CREATE TABLE `jugador_mesa`
-(
-    `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `mesa_id` INTEGER,
-    `estado` VARCHAR(100),
-    `jugador_id` INTEGER,
-    `created_at` DATETIME,
-    `updated_at` DATETIME,
-    `created_by` VARCHAR(255),
-    `updated_by` VARCHAR(255),
-    PRIMARY KEY (`id`),
-    BTREE INDEX `jugador_mesa_FI_1` (`mesa_id`),
-    BTREE INDEX `jugador_mesa_FI_2` (`jugador_id`),
-    CONSTRAINT `jugador_mesa_FK_1`
-        FOREIGN KEY (`mesa_id`)
-        REFERENCES `mesa` (`id`),
-    CONSTRAINT `jugador_mesa_FK_2`
-        FOREIGN KEY (`jugador_id`)
-        REFERENCES `jugador` (`id`)
-) ENGINE=InnoDB;
-
-CREATE TABLE `mesa`
-(
-    `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `created_at` DATETIME,
-    `updated_at` DATETIME,
-    `created_by` VARCHAR(255),
-    `updated_by` VARCHAR(255),
-    `activo` TINYINT(1) DEFAULT 1,
-    `turno` INTEGER,
-    `cartas` TEXT,
-    PRIMARY KEY (`id`)
-) ENGINE=InnoDB;
-
-CREATE TABLE `turno`
-(
-    `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `estado` VARCHAR(100),
-    `no_turno` INTEGER,
-    `jugador_mesa_id` INTEGER,
-    `mano` TEXT,
-    PRIMARY KEY (`id`),
-    BTREE INDEX `turno_FI_1` (`jugador_mesa_id`),
-    CONSTRAINT `turno_FK_1`
-        FOREIGN KEY (`jugador_mesa_id`)
-        REFERENCES `jugador_mesa` (`id`)
-) ENGINE=InnoDB;
+DROP TABLE IF EXISTS `tipo_presentacion`;
 
 # This restores the fkey checks, after having unset them earlier
 SET FOREIGN_KEY_CHECKS = 1;

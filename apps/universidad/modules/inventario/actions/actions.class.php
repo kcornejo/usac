@@ -59,5 +59,7 @@ class inventarioActions extends sfActions {
                 ->limit(5)
                 ->find();
     }
+    
+   
 
 }

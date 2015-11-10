@@ -13,7 +13,6 @@
 class IngresoInventarioForm extends sfForm {
 
     public function configure() {
-        $Producto = ProductoQuery::create()->find();
         $this->setWidget('Producto', new sfWidgetFormPropelChoice(array('model' => 'Producto'), array('class' => 'form-control')));
         $this->setWidget('Proveedor', new sfWidgetFormPropelChoice(array('model' => 'Proveedor'), array('class' => 'form-control')));
         $this->setWidget('Precio', new sfWidgetFormInputText(array('label' => 'Precio por Unidad'), array('class' => 'form-control input-medium')));

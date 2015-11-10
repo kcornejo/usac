@@ -25,7 +25,7 @@ propel:
         id:              ~
         producto_id:     ~
         cantidad:       {type:integer,required:false}
-        estado:         {type:varchar(20),required:true}
+        precio:         {type:varchar(20),required:true}
         pedido_proveedor_id:   ~
     marca:
         id:        ~

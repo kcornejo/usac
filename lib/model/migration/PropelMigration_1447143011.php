@@ -2,10 +2,10 @@
 
 /**
  * Data object containing the SQL and PHP code to migrate the database
- * up to version 1446791471.
- * Generated on 2015-11-06 07:31:11 
+ * up to version 1447143011.
+ * Generated on 2015-11-10 09:10:11 
  */
-class PropelMigration_1446791471
+class PropelMigration_1447143011
 {
 
     public function preUp($manager)
@@ -42,23 +42,7 @@ class PropelMigration_1446791471
 # It "suspends judgement" for fkey relationships until are tables are set.
 SET FOREIGN_KEY_CHECKS = 0;
 
-ALTER TABLE `promocion` CHANGE `fechaFinal` `fecha_fin` DATE NOT NULL;
-
-ALTER TABLE `promocion` CHANGE `estadoPromo` `estado` VARCHAR(11);
-
-ALTER TABLE `proveedor` CHANGE `correoElectronico` `correo_eletronico` VARCHAR(70) NOT NULL;
-
-ALTER TABLE `proveedor` CHANGE `nombreContacto` `nombre_contacto` VARCHAR(70);
-
-ALTER TABLE `tipo_transaccion`
-    ADD `created_at` DATETIME AFTER `descripcion`,
-    ADD `updated_at` DATETIME AFTER `created_at`,
-    ADD `created_by` VARCHAR(32) AFTER `updated_at`,
-    ADD `updated_by` VARCHAR(32) AFTER `created_by`;
-
-ALTER TABLE `tipo_transaccion` DROP `fechaCreacion`;
-
-ALTER TABLE `transaccion` CHANGE `noTarjeta` `no_tarjeta` VARCHAR(60);
+ALTER TABLE `detalle_pedido_proveedor` CHANGE `estado` `precio` VARCHAR(20) NOT NULL;
 
 # This restores the fkey checks, after having unset them earlier
 SET FOREIGN_KEY_CHECKS = 1;
@@ -80,26 +64,7 @@ SET FOREIGN_KEY_CHECKS = 1;
 # It "suspends judgement" for fkey relationships until are tables are set.
 SET FOREIGN_KEY_CHECKS = 0;
 
-ALTER TABLE `promocion` CHANGE `fecha_fin` `fechaFinal` DATE NOT NULL;
-
-ALTER TABLE `promocion` CHANGE `estado` `estadoPromo` VARCHAR(11);
-
-ALTER TABLE `proveedor` CHANGE `correo_eletronico` `correoElectronico` VARCHAR(70) NOT NULL;
-
-ALTER TABLE `proveedor` CHANGE `nombre_contacto` `nombreContacto` VARCHAR(70);
-
-ALTER TABLE `tipo_transaccion`
-    ADD `fechaCreacion` DATE NOT NULL AFTER `descripcion`;
-
-ALTER TABLE `tipo_transaccion` DROP `created_at`;
-
-ALTER TABLE `tipo_transaccion` DROP `updated_at`;
-
-ALTER TABLE `tipo_transaccion` DROP `created_by`;
-
-ALTER TABLE `tipo_transaccion` DROP `updated_by`;
-
-ALTER TABLE `transaccion` CHANGE `no_tarjeta` `noTarjeta` VARCHAR(60);
+ALTER TABLE `detalle_pedido_proveedor` CHANGE `precio` `estado` VARCHAR(20) NOT NULL;
 
 # This restores the fkey checks, after having unset them earlier
 SET FOREIGN_KEY_CHECKS = 1;
