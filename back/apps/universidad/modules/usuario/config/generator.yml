@@ -1,0 +1,27 @@
+generator:
+  class: sfPropelGenerator
+  param:
+    model_class:           usuario
+    theme:                 fusion
+    non_verbose_templates: true
+    with_show:             false
+    singular:              usuario
+    plural:                usuarios
+    route_prefix:          usuario
+    with_propel_route:     1
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        title:             Listado de Usuarios
+        display:           [usuario,  nombre, apellido, administrador]
+      filter:
+         display:           [usuario,  nombre, apellido, administrador]
+      form:
+        display:           [usuario, clave, nombre, apellido, administrador]
+      edit:
+        title:           Editar Usuario
+      new:
+        title:           Nuevo Usuario
