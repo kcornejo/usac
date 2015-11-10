@@ -16,6 +16,7 @@ generator:
       fields:  ~
       list:
         title:              Listado de Marcas
+        display:            [nombre, descripcion]
       filter:
         display:            [nombre, descripcion]
       form:

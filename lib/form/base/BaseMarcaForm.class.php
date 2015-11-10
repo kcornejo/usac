@@ -25,7 +25,7 @@ abstract class BaseMarcaForm extends BaseFormPropel
 
     $this->setValidators(array(
       'id'          => new sfValidatorChoice(array('choices' => array($this->getObject()->getId()), 'empty_value' => $this->getObject()->getId(), 'required' => false)),
-      'nombre'      => new sfValidatorString(array('max_length' => 30)),
+      'nombre'      => new sfValidatorString(array('max_length' => 255)),
       'descripcion' => new sfValidatorString(array('max_length' => 60, 'required' => false)),
       'created_at'  => new sfValidatorDateTime(array('required' => false)),
       'updated_at'  => new sfValidatorDateTime(array('required' => false)),

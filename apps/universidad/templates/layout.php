@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,6 +13,7 @@
 
         <link href="/web/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <!-- Ionicons -->
         <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
         <link href="/web/vendor/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
         <link href="/web/vendor/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
@@ -25,149 +26,156 @@
         <script src="js/scripts.js"></script>
 
     </head>
-    <body class="skin-blue sidebar-mini" >
+    <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
+    <body class="skin-blue layout-top-nav">
         <div class="wrapper">
 
             <header class="main-header">
-                <!-- Logo -->
-                <a href="index2.html" class="logo">
-                    <span class="logo-mini"><b>Farmacia Integral</b></span>
-                    <span class="logo-lg"><b>Farmacia Integral</b></span>
-                </a>
-                <nav class="navbar navbar-static-top" role="navigation">
-                    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                        <span class="sr-only">Toggle navigation</span>
-                    </a>
-                    <div class="navbar-custom-menu">
-                        <ul class="nav navbar-nav">
-                            <li>
-                                <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-                            </li>
-                        </ul>
-                    </div>
+                <nav class="navbar navbar-static-top">
+                    <div class="container">
+                        <div class="navbar-header">
+
+                            <a href="<?php echo url_for('inicio/index') ?>" class="navbar-brand">
+                                <img src="/vendor/dist/img/logo_farmacia.png" style="width:60px;margin-top:-5px"/>
+                            </a>
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Catalogo <span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li class="">
+                                            <a href="<?php echo url_for('usuario/index') ?>">
+                                                <i class="fa fa-user"></i> <span>Usuarios</span> 
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="<?php echo url_for('producto/index') ?>">
+                                                <i class="fa fa-check"></i> <span>Producto</span> 
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="<?php echo url_for('cliente/index') ?>">
+                                                <i class="fa fa-users"></i> <span>Clientes</span> 
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="<?php echo url_for('marca/index') ?>">
+                                                <i class="fa fa-file-code-o"></i> <span>Marca</span> 
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="<?php echo url_for('proveedor/index') ?>">
+                                                <i class="fa fa-refresh"></i> <span>Proveedor</span> 
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="<?php echo url_for('tipo_pago/index') ?>">
+                                                <i class="fa fa-money"></i> <span>Tipo de Pago</span> 
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="<?php echo url_for('tipo_producto/index') ?>">
+                                                <i class="fa fa-check"></i> <span>Tipo de Producto</span> 
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="<?php echo url_for('tipo_transaccion/index') ?>">
+                                                <i class="fa fa-check"></i> <span>Tipo de Transaccion</span> 
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="<?php echo url_for('tipo_usuario/index') ?>">
+                                                <i class="fa fa-shield"></i> <span>Tipo de Usuario</span> 
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Movimientos <span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li class="">
+                                            <a href="<?php echo url_for('inventario/index') ?>">
+                                                <i class="fa fa-plus"></i> <span>Ingreso a Inventario</span> 
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="<?php echo url_for('venta/index') ?>">
+                                                <i class="fa fa-money"></i> <span>Venta</span> 
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Registro <span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li class="">
+                                            <a href="<?php echo url_for('bitacora_cambios/index') ?>">
+                                                <i class="fa fa-book"></i> <span>Bitacora de Cambios</span> 
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div><!-- /.navbar-collapse -->
+                        <!-- Navbar Right Menu -->
+                        <div class="navbar-custom-menu">
+                            <ul class="nav navbar-nav">
+                                <!-- User Account Menu -->
+                                <li class="dropdown user user-menu">
+                                    <!-- Menu Toggle Button -->
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <!-- The user image in the navbar-->
+                                        <img src="/vendor/dist/img/avatar5.png" class="user-image" alt="User Image" />
+                                        <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                                        <span class="hidden-xs"><?php echo sfContext::getInstance()->getUser()->getAttribute('usuarioNombre', null, 'seguridad') ?></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <!-- The user image in the menu -->
+                                        <li class="user-header">
+                                            <img src="/vendor/dist/img/avatar5.png" class="img-circle" alt="User Image" />
+                                            <p>
+                                                <?php echo sfContext::getInstance()->getUser()->getAttribute('usuarioNombre', null, 'seguridad') ?>
+                                            </p>
+                                        </li>
+                                        <!-- Menu Body -->
+
+                                        <!-- Menu Footer-->
+                                        <li class="user-footer">
+
+                                            <div class="pull-right">
+                                                <a href="<?php echo url_for('seguridad/logout') ?>" class="btn btn-default btn-flat">Cerrar Sesion</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div><!-- /.navbar-custom-menu -->
+                    </div><!-- /.container-fluid -->
                 </nav>
             </header>
-            <aside class="main-sidebar">
-                <section class="sidebar">
-                    <div class="user-panel">
-                        <div class="pull-left image">
-                            <img src="/web/vendor/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
-                        </div>
-                        <div class="pull-left info">
-                            <p>Usuario</p>
-                        </div>
-                    </div>
-                    <ul class="sidebar-menu">
-                        <li class="header">MAIN NAVIGATION</li>
-                        <li class="active treeview">
-                            <a href="<?php echo url_for('inicio/index') ?>">
-                                <i class="fa fa-home"></i> <span>Inicio</span> <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                        </li>
-                         <li class="">
-                            <a href="<?php echo url_for('usuario/index') ?>">
-                                <i class="fa fa-user"></i> <span>Usuarios</span> <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                        </li>
-                         <li class="">
-                            <a href="<?php echo url_for('cliente/index') ?>">
-                                <i class="fa fa-users"></i> <span>Clientes</span> <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a href="<?php echo url_for('marca/index') ?>">
-                                <i class="fa fa-file-code-o"></i> <span>Marca</span> <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a href="<?php echo url_for('proveedor/index') ?>">
-                                <i class="fa fa-refresh"></i> <span>Proveedor</span> <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                        </li>
-                         <li class="">
-                            <a href="<?php echo url_for('tipo_pago/index') ?>">
-                                <i class="fa fa-money"></i> <span>Tipo de Pago</span> <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a href="<?php echo url_for('tipo_producto/index') ?>">
-                                <i class="fa fa-check"></i> <span>Tipo de Producto</span> <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a href="<?php echo url_for('tipo_transaccion/index') ?>">
-                                <i class="fa fa-check"></i> <span>Tipo de Transaccion</span> <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a href="<?php echo url_for('tipo_usuario/index') ?>">
-                                <i class="fa fa-shield"></i> <span>Tipo de Usuario</span> <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                        </li>
-                         <li class="">
-                            <a href="<?php echo url_for('seguridad/logout') ?>">
-                                <i class="fa fa-key"></i> <span>Cerrar Sesión</span> <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </section>
-            </aside>
+            <!-- Full Width Column -->
             <div class="content-wrapper">
-                <section class="content">
+                <div class="container">
+                    <br/><br/>
+                    <?php include_partial('inicio/avisos') ?>
                     <?php echo $sf_content ?>
-
-                </section>
-            </div>
+                </div><!-- /.container -->
+            </div><!-- /.content-wrapper -->
             <footer class="main-footer">
-                <div class="pull-right hidden-xs">
-                    <b>Version</b> 1
-                </div>
-                <strong>Copyright &copy; 2014-2015 
+                <div class="container">
+                    <div class="pull-right hidden-xs">
+                        <b>Version</b> 2.2.0
+                    </div>
+                    <strong>Copyright &copy; 2014-2015 USAC.</strong>
+                </div><!-- /.container -->
             </footer>
-            <aside class="control-sidebar control-sidebar-dark">
-                <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-                </ul>
-                <div class="tab-content">
-                    <div class="tab-pane" id="control-sidebar-home-tab">
-                        <h3 class="control-sidebar-heading">Recent Activity</h3>
-                        <ul class="control-sidebar-menu">
-                            <li>
-                                <a href="javascript::;">
-                                    <i class="menu-icon fa fa-birthday-cake bg-red"></i>
-                                    <div class="menu-info">
-                                        <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-                                        <p>Will be 23 on April 24th</p>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript::;">
-                                    <i class="menu-icon fa fa-user bg-yellow"></i>
-                                    <div class="menu-info">
-                                        <h4 class="control-sidebar-subheading">Frodo Updated His Profile</h4>
-                                        <p>New phone +1(800)555-1234</p>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript::;">
-                                    <i class="menu-icon fa fa-envelope-o bg-light-blue"></i>
-                                    <div class="menu-info">
-                                        <h4 class="control-sidebar-subheading">Nora Joined Mailing List</h4>
-                                        <p>nora@example.com</p>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript::;">
-                                    <i class="menu-icon fa fa-file-code-o bg-green"></i>
-                                    <div class="menu-info">
-                                        <h4 class="control-sidebar-subheading">Cron Job 254 Executed</h4>
-                                        <p>Execution time 5 seconds</p>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul><!-- /.control-sidebar-menu -->
+        </div><!-- ./wrapper -->
 
                         <h3 class="control-sidebar-heading">Tasks Progress</h3>
                         <ul class="control-sidebar-menu">

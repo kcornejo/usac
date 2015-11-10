@@ -9,4 +9,6 @@
 root { 
     display: block;
 }
-
+.input-medium{
+    width: 50%;
+}

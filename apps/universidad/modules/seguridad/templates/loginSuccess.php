@@ -27,7 +27,7 @@
     <body class="hold-transition login-page">
         <div class="login-box">
             <div class="login-logo">
-                <b>Farmacia Integral</b>
+                <img src="/vendor/dist/img/logo_farmacia.png" style="width:200px;margin-top:-5px"/>
             </div><!-- /.login-logo -->
             <div class="login-box-body">
                 <p class="login-box-msg">Ingresa tus credenciales</p>
