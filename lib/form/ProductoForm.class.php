@@ -13,7 +13,7 @@ class ProductoForm extends BaseProductoForm {
         $this->setWidget('imagen', new sfWidgetFormInputFile());
 
         $this->validatorSchema['imagen'] = new sfValidatorFile(array(
-            'path' => sfConfig::get('sf_upload_dir') . '/carga',
+            'path' =>  '/web/uploads/carga',
             'mime_types' => 'web_images'
                 )
         );

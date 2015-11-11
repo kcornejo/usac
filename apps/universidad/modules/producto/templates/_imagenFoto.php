@@ -21,7 +21,7 @@ if ($valor) {
 
         </div>
         <div class="col-md-9">
-            <img src="<?php echo '/uploads/' . 'carga/' . $imagen ?>" style="width:100px"/>
+            <img src="<?php echo '/web/uploads/' . 'carga/' . $imagen ?>" style="width:100px"/>
         </div>
     </div>
 <?php endif; ?>
