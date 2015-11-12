@@ -88,6 +88,8 @@ class pedido_proveedorActions extends sfActions {
                 $pedido->setUsuario($Usuario);
                 $pedido->setDescripcion($valores['Descripcion']);
                 $pedido->setEstado($valores['Estado']);
+                $pedido->setSerie($valores['Serie']);
+                $pedido->setDocumento($valores['Documento']);
                 $pedido->save();
                 $this->redirect('pedido_proveedor/index');
             }

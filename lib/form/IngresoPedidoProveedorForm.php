@@ -20,6 +20,8 @@ class IngresoPedidoProveedorForm extends sfForm {
         );
         $this->setWidget('Proveedor', new sfWidgetFormPropelChoice(array('model' => 'Proveedor'), array('class' => 'form-control')));
         $this->setWidget('Descripcion', new sfWidgetFormInputText(array('label' => 'Descripcion de pedido'), array('class' => 'form-control input-medium')));
+        $this->setWidget('Serie', new sfWidgetFormInputText(array('label' => 'Serie'), array('class' => 'form-control input-medium')));
+        $this->setWidget('Documento', new sfWidgetFormInputText(array('label' => 'Documento de pedido'), array('class' => 'form-control input-medium')));
         $this->setWidget('Estado', new sfWidgetFormChoice(array(
             'choices' => $estados,
             'expanded' => false,
@@ -27,6 +29,8 @@ class IngresoPedidoProveedorForm extends sfForm {
         $this->setValidator('Proveedor', new sfValidatorString(array('required' => true)));
         $this->setValidator('Descripcion', new sfValidatorString(array('required' => false)));
         $this->setValidator('Estado', new sfValidatorString(array('required' => true)));
+        $this->setValidator('Serie', new sfValidatorString(array('required' => true)));
+        $this->setValidator('Documento', new sfValidatorString(array('required' => true)));
         $this->widgetSchema->setNameFormat('ingreso_pedprov[%s]');
     }
 

@@ -25,6 +25,8 @@
                             <th>Proveedor</th>
                             <th>Usuario</th>
                             <th>Descripcion</th>
+                            <th>Serie</th>
+                            <th>Documento</th>
                             <th>Fecha</th>
                             <th>Estado</th>
                             <th>Accion</th>
@@ -36,6 +38,8 @@
                                 <td><?php echo $pedido->getProveedor()->getNombre();?></td>
                                 <td><?php echo $pedido->getUsuario()->getNombre();?></td>
                                 <td><?php echo $pedido->getDescripcion();?></td>
+                                <td><?php echo $pedido->getSerie();?></td>
+                                <td><?php echo $pedido->getDocumento();?></td>
                                 <td><?php echo $pedido->getFecha();?></td>
                                 <td><?php echo $pedido->getEstado()?></td>
                                 <td>

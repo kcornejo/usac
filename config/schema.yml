@@ -44,6 +44,8 @@ propel:
         estado:         {type:varchar(30),required:true}
         usuario_id:      ~
         proveedor_id:    ~
+        serie:          { type: varchar(255)}
+        documento:      { type: varchar(255)}
     promocion:
         id:    ~
         descripcion:    {type:varchar(70),required:false}
