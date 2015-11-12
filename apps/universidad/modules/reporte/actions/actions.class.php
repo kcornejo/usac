@@ -17,7 +17,7 @@ class reporteActions extends sfActions {
      */
     public function executeIndex(sfWebRequest $request) {
         if ($request->hasParameter('pdf')) {
-            $html = '<img src="/vendor/dist/img/logo_farmacia.png" style="width:150px"/><br/><h3>' . sfContext::getInstance()->getUser()->getAttribute('html', null, 'string') . '</h3><br/>';
+            $html = '<img src="/web/vendor/dist/img/logo_farmacia.png" style="width:150px"/><br/><h3>' . sfContext::getInstance()->getUser()->getAttribute('html', null, 'string') . '</h3><br/>';
             $html .= sfContext::getInstance()->getUser()->getAttribute('html', null, 'reporte');
             $pdf = new sfTCPDF("P", "mm", "Letter");
             $pdf->SetCreator(PDF_CREATOR);
