@@ -27,6 +27,7 @@ class pedido_proveedorActions extends sfActions {
         $pedido->save();
         $this->redirect('pedido_proveedor/index');
     }
+
     public function executeEntregado(sfWebRequest $request) {
         $id = $request->getParameter('id');
         $BitacoraCambios = new BitacoraCambios();
@@ -37,28 +38,34 @@ class pedido_proveedorActions extends sfActions {
         $pedido = PedidoProveedorQuery::create()->findOneById($id);
         $pedido->setEstado('Entregado');
         $pedido->save();
-        $detalle_pedido= DetallePedidoProveedorQuery::create()->filterByPedidoProveedor($pedido)->find();
-        foreach($detalle_pedido as $det){
+        $detalle_pedido = DetallePedidoProveedorQuery::create()->filterByPedidoProveedor($pedido)->find();
+        foreach ($detalle_pedido as $det) {
             $Comprobacion = InventarioQuery::create()
-                        ->filterByProductoId($det->getProductoId())
-                        ->filterByProveedorId($pedido->getProveedorId())
-                        ->findOne();
-                if ($Comprobacion) {
-                    $Comprobacion->setCantidad($Comprobacion->getCantidad() + $det->getCantidad());
-                    $anterior = $det->getCantidad() * $Comprobacion->getPrecioCompra();
-                    $actual = $det->getCantidad() * $det->getPrecio();
-                    $suma = ($anterior + $actual) / ($det->getCantidad() + $Comprobacion->getCantidad());
-                    $Comprobacion->setPrecioCompra($suma);
-                    $Comprobacion->save();
-                } else {
-                    $Inventario = new Inventario();
-                    $Inventario->setPrecioCompra($det->getPrecio());
-                    $Inventario->setProductoId($det->getProductoId());
-                    $Inventario->setProveedorId($pedido->getProveedorId());
-                    $Inventario->setCantidad($det->getCantidad());
-                    $Inventario->save();
-                }
-            
+                    ->filterByProductoId($det->getProductoId())
+                    ->filterByProveedorId($pedido->getProveedorId())
+                    ->findOne();
+            if ($Comprobacion) {
+                $Comprobacion->setCantidad($Comprobacion->getCantidad() + $det->getCantidad());
+                $anterior = $det->getCantidad() * $Comprobacion->getPrecioCompra();
+                $actual = $det->getCantidad() * $det->getPrecio();
+                $suma = ($anterior + $actual) / ($det->getCantidad() + $Comprobacion->getCantidad());
+                $Comprobacion->setPrecioCompra($suma);
+                $Comprobacion->save();
+            } else {
+                $Inventario = new Inventario();
+                $Inventario->setPrecioCompra($det->getPrecio());
+                $Inventario->setProductoId($det->getProductoId());
+                $Inventario->setProveedorId($pedido->getProveedorId());
+                $Inventario->setCantidad($det->getCantidad());
+                $Inventario->save();
+            }
+            $Movimiento = new Movimiento();
+            $Movimiento->setTipoMovimiento('+');
+            $Movimiento->setProveedorId($pedido->getProveedorId());
+            $Movimiento->setProductoId($det->getProductoId());
+            $Movimiento->setCantidad($det->getCantidad());
+            $Movimiento->setPrecio($det->getPrecio());
+            $Movimiento->save();
         }
         $this->redirect('pedido_proveedor/index');
     }
@@ -91,8 +98,8 @@ class pedido_proveedorActions extends sfActions {
 
     public function executeDetalle(sfWebRequest $request) {
         $this->id = $request->getParameter('id');
-        $cabecera= PedidoProveedorQuery::create()->findOneById($this->id);
-        $this->estado=$cabecera->getEstado();
+        $cabecera = PedidoProveedorQuery::create()->findOneById($this->id);
+        $this->estado = $cabecera->getEstado();
         $this->form = new IngresoDetallePedidoProveedorForm();
         if ($request->isMethod('POST')) {
             $this->form->bind($request->getParameter('ingreso_detpedprov'));
