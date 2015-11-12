@@ -28,6 +28,7 @@ propel:
         cantidad:       {type:integer,required:false}
         precio:         {type:varchar(20),required:true}
         pedido_proveedor_id:   ~
+        estado:         {type:varchar(20),required:true}
     marca:
         id:        ~
         nombre:                         { type: varchar, required: true, primaryString: true }
@@ -65,6 +66,8 @@ propel:
         razon_social:                   { type: varchar(255) }
         contacto:                       { type: varchar(255) }
         referencia:                     { type: varchar(255) }
+        correo:                         { type: varchar(255) }
+        
     tipo_pago:
         id:     ~
         nombre:                         { type: varchar, required: true, primaryString: true }
@@ -105,7 +108,8 @@ propel:
         imagen:                              { type: varchar}
         codigo:                              { type: varchar}
         precio:                              { type: double}
-        costo:                              { type: double}
+        costo:                               { type: double }
+        cantidad_minima_pedido:              { type: integer, default: 20}
     inventario:
         id:            ~
         producto_id:   ~
@@ -179,3 +183,12 @@ propel:
         created_by:                        { type: varchar(32) }
         updated_by:                        { type: varchar(32) }
         updated_by:                        { type: varchar(32) }
+    movimiento:
+       id:                                ~
+       proveedor_id:                      ~
+       cliente_id:                        ~
+       tipo_movimiento:                   { type:varchar(10)}
+       producto_id:                       ~
+       cantidad:                          { type: integer}
+       fecha:                             { type: varchar(250) }
+       precio:                            { type: double}
