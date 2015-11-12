@@ -194,3 +194,10 @@ propel:
        cantidad:                          { type: integer}
        fecha:                             { type: varchar(250) }
        precio:                            { type: double}
+    promocion:
+       id:                                ~
+       activo:                            { type: boolean, default: true}
+       fecha_inicio:                      { type: varchar(32) }
+       fecha_fin:                         { type: varchar(32) }
+       producto_id:                       ~
+       descuento:                         { type: double}

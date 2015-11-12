@@ -20,6 +20,8 @@ abstract class BasePedidoProveedorForm extends BaseFormPropel
       'estado'       => new sfWidgetFormInputText(),
       'usuario_id'   => new sfWidgetFormPropelChoice(array('model' => 'Usuario', 'add_empty' => true)),
       'proveedor_id' => new sfWidgetFormPropelChoice(array('model' => 'Proveedor', 'add_empty' => true)),
+      'serie'        => new sfWidgetFormInputText(),
+      'documento'    => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
@@ -29,6 +31,8 @@ abstract class BasePedidoProveedorForm extends BaseFormPropel
       'estado'       => new sfValidatorString(array('max_length' => 30)),
       'usuario_id'   => new sfValidatorPropelChoice(array('model' => 'Usuario', 'column' => 'id', 'required' => false)),
       'proveedor_id' => new sfValidatorPropelChoice(array('model' => 'Proveedor', 'column' => 'id', 'required' => false)),
+      'serie'        => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'documento'    => new sfValidatorString(array('max_length' => 255, 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('pedido_proveedor[%s]');

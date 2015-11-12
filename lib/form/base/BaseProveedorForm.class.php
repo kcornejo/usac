@@ -26,6 +26,7 @@ abstract class BaseProveedorForm extends BaseFormPropel
       'razon_social'      => new sfWidgetFormInputText(),
       'contacto'          => new sfWidgetFormInputText(),
       'referencia'        => new sfWidgetFormInputText(),
+      'correo'            => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
@@ -41,6 +42,7 @@ abstract class BaseProveedorForm extends BaseFormPropel
       'razon_social'      => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'contacto'          => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'referencia'        => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'correo'            => new sfValidatorString(array('max_length' => 255, 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('proveedor[%s]');

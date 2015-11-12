@@ -23,6 +23,7 @@ abstract class BaseProveedorFormFilter extends BaseFormFilterPropel
       'razon_social'      => new sfWidgetFormFilterInput(),
       'contacto'          => new sfWidgetFormFilterInput(),
       'referencia'        => new sfWidgetFormFilterInput(),
+      'correo'            => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
@@ -37,6 +38,7 @@ abstract class BaseProveedorFormFilter extends BaseFormFilterPropel
       'razon_social'      => new sfValidatorPass(array('required' => false)),
       'contacto'          => new sfValidatorPass(array('required' => false)),
       'referencia'        => new sfValidatorPass(array('required' => false)),
+      'correo'            => new sfValidatorPass(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('proveedor_filters[%s]');
@@ -66,6 +68,7 @@ abstract class BaseProveedorFormFilter extends BaseFormFilterPropel
       'razon_social'      => 'Text',
       'contacto'          => 'Text',
       'referencia'        => 'Text',
+      'correo'            => 'Text',
     );
   }
 }

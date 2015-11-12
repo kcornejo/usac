@@ -8,7 +8,7 @@
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($datos['listadoUno'] as $dato): ?>
+        <?php foreach ($listadoUno as $dato): ?>
             <tr>
                 <td><?php echo $dato['Cliente'] ?></td>
                 <td><?php echo $dato['Maximo'] ?></td>
@@ -24,7 +24,7 @@
             <td>Cliente</td>
             <td>Maximo</td>
         </tr>
-        <?php foreach ($datos['listadoDos'] as $dato): ?>
+        <?php foreach ($listadoDos as $dato): ?>
             <tr>
                 <td><?php echo $dato['Cliente'] ?></td>
                 <td><?php echo $dato['Maximo'] ?></td>
@@ -42,7 +42,7 @@
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($datos['listadoTres'] as $dato): ?>
+        <?php foreach ($listadoTres as $dato): ?>
             <tr>
                 <td><?php echo $dato['Cliente'] ?></td>
                 <td><?php echo $dato['Monto'] ?></td>

@@ -19,6 +19,7 @@ abstract class BaseDetallePedidoProveedorForm extends BaseFormPropel
       'cantidad'            => new sfWidgetFormInputText(),
       'precio'              => new sfWidgetFormInputText(),
       'pedido_proveedor_id' => new sfWidgetFormPropelChoice(array('model' => 'PedidoProveedor', 'add_empty' => true)),
+      'estado'              => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
@@ -27,6 +28,7 @@ abstract class BaseDetallePedidoProveedorForm extends BaseFormPropel
       'cantidad'            => new sfValidatorInteger(array('min' => -2147483648, 'max' => 2147483647, 'required' => false)),
       'precio'              => new sfValidatorString(array('max_length' => 20)),
       'pedido_proveedor_id' => new sfValidatorPropelChoice(array('model' => 'PedidoProveedor', 'column' => 'id', 'required' => false)),
+      'estado'              => new sfValidatorString(array('max_length' => 20)),
     ));
 
     $this->widgetSchema->setNameFormat('detalle_pedido_proveedor[%s]');

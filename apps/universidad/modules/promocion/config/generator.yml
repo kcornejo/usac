@@ -1,0 +1,27 @@
+generator:
+  class: sfPropelGenerator
+  param:
+    model_class:           promocion
+    theme:                 fusion
+    non_verbose_templates: true
+    with_show:             false
+    singular:              promocion
+    plural:                promocions
+    route_prefix:          promocion
+    with_propel_route:     1
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        display:    [activo, fecha_inicio, fecha_fin, producto, descuento]
+        title:      Listado de Promociones
+      filter:
+        display:    [activo, fecha_inicio, fecha_fin, producto_id, descuento]
+      form:
+        display:    [activo, fecha_inicio, fecha_fin, producto_id, descuento]
+      edit:
+        title:      Editar Promoción
+      new:
+        title:      Nueva Promoción

@@ -23,6 +23,9 @@ abstract class BaseFacturaForm extends BaseFormPropel
       'total'        => new sfWidgetFormInputText(),
       'tipo_pago_id' => new sfWidgetFormPropelChoice(array('model' => 'TipoPago', 'add_empty' => true)),
       'activo'       => new sfWidgetFormInputCheckbox(),
+      'fecha'        => new sfWidgetFormInputText(),
+      'serie'        => new sfWidgetFormInputText(),
+      'documento'    => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
@@ -35,6 +38,9 @@ abstract class BaseFacturaForm extends BaseFormPropel
       'total'        => new sfValidatorNumber(array('required' => false)),
       'tipo_pago_id' => new sfValidatorPropelChoice(array('model' => 'TipoPago', 'column' => 'id', 'required' => false)),
       'activo'       => new sfValidatorBoolean(array('required' => false)),
+      'fecha'        => new sfValidatorString(array('max_length' => 32, 'required' => false)),
+      'serie'        => new sfValidatorString(array('max_length' => 100, 'required' => false)),
+      'documento'    => new sfValidatorString(array('max_length' => 100, 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('factura[%s]');

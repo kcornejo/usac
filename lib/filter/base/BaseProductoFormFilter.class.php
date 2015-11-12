@@ -12,27 +12,29 @@ abstract class BaseProductoFormFilter extends BaseFormFilterPropel
   public function setup()
   {
     $this->setWidgets(array(
-      'descripcion'          => new sfWidgetFormFilterInput(array('with_empty' => false)),
-      'marca_id'             => new sfWidgetFormPropelChoice(array('model' => 'Marca', 'add_empty' => true)),
-      'tipo_producto_id'     => new sfWidgetFormPropelChoice(array('model' => 'TipoProducto', 'add_empty' => true)),
-      'tipo_presentacion_id' => new sfWidgetFormPropelChoice(array('model' => 'TipoPresentacion', 'add_empty' => true)),
-      'cantidad_minima'      => new sfWidgetFormFilterInput(),
-      'imagen'               => new sfWidgetFormFilterInput(),
-      'codigo'               => new sfWidgetFormFilterInput(),
-      'precio'               => new sfWidgetFormFilterInput(),
-      'costo'                => new sfWidgetFormFilterInput(),
+      'descripcion'            => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'marca_id'               => new sfWidgetFormPropelChoice(array('model' => 'Marca', 'add_empty' => true)),
+      'tipo_producto_id'       => new sfWidgetFormPropelChoice(array('model' => 'TipoProducto', 'add_empty' => true)),
+      'tipo_presentacion_id'   => new sfWidgetFormPropelChoice(array('model' => 'TipoPresentacion', 'add_empty' => true)),
+      'cantidad_minima'        => new sfWidgetFormFilterInput(),
+      'imagen'                 => new sfWidgetFormFilterInput(),
+      'codigo'                 => new sfWidgetFormFilterInput(),
+      'precio'                 => new sfWidgetFormFilterInput(),
+      'costo'                  => new sfWidgetFormFilterInput(),
+      'cantidad_minima_pedido' => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
-      'descripcion'          => new sfValidatorPass(array('required' => false)),
-      'marca_id'             => new sfValidatorPropelChoice(array('required' => false, 'model' => 'Marca', 'column' => 'id')),
-      'tipo_producto_id'     => new sfValidatorPropelChoice(array('required' => false, 'model' => 'TipoProducto', 'column' => 'id')),
-      'tipo_presentacion_id' => new sfValidatorPropelChoice(array('required' => false, 'model' => 'TipoPresentacion', 'column' => 'id')),
-      'cantidad_minima'      => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
-      'imagen'               => new sfValidatorPass(array('required' => false)),
-      'codigo'               => new sfValidatorPass(array('required' => false)),
-      'precio'               => new sfValidatorSchemaFilter('text', new sfValidatorNumber(array('required' => false))),
-      'costo'                => new sfValidatorSchemaFilter('text', new sfValidatorNumber(array('required' => false))),
+      'descripcion'            => new sfValidatorPass(array('required' => false)),
+      'marca_id'               => new sfValidatorPropelChoice(array('required' => false, 'model' => 'Marca', 'column' => 'id')),
+      'tipo_producto_id'       => new sfValidatorPropelChoice(array('required' => false, 'model' => 'TipoProducto', 'column' => 'id')),
+      'tipo_presentacion_id'   => new sfValidatorPropelChoice(array('required' => false, 'model' => 'TipoPresentacion', 'column' => 'id')),
+      'cantidad_minima'        => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'imagen'                 => new sfValidatorPass(array('required' => false)),
+      'codigo'                 => new sfValidatorPass(array('required' => false)),
+      'precio'                 => new sfValidatorSchemaFilter('text', new sfValidatorNumber(array('required' => false))),
+      'costo'                  => new sfValidatorSchemaFilter('text', new sfValidatorNumber(array('required' => false))),
+      'cantidad_minima_pedido' => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
     ));
 
     $this->widgetSchema->setNameFormat('producto_filters[%s]');
@@ -50,16 +52,17 @@ abstract class BaseProductoFormFilter extends BaseFormFilterPropel
   public function getFields()
   {
     return array(
-      'id'                   => 'Number',
-      'descripcion'          => 'Text',
-      'marca_id'             => 'ForeignKey',
-      'tipo_producto_id'     => 'ForeignKey',
-      'tipo_presentacion_id' => 'ForeignKey',
-      'cantidad_minima'      => 'Number',
-      'imagen'               => 'Text',
-      'codigo'               => 'Text',
-      'precio'               => 'Number',
-      'costo'                => 'Number',
+      'id'                     => 'Number',
+      'descripcion'            => 'Text',
+      'marca_id'               => 'ForeignKey',
+      'tipo_producto_id'       => 'ForeignKey',
+      'tipo_presentacion_id'   => 'ForeignKey',
+      'cantidad_minima'        => 'Number',
+      'imagen'                 => 'Text',
+      'codigo'                 => 'Text',
+      'precio'                 => 'Number',
+      'costo'                  => 'Number',
+      'cantidad_minima_pedido' => 'Number',
     );
   }
 }

@@ -53,6 +53,15 @@ class ventaActions extends sfActions {
                 $Producto = InventarioQuery::create()
                         ->filterByProductoId($valores['Producto'])
                         ->findOne();
+                $fecha = date('d/m/Y');
+                $Promocion = PromocionQuery::create()
+                        ->filterByProductoId($valores['Producto'])
+                        ->where("fecha_inicio <= '$fecha' and fecha_fin >= '$fecha'")
+                        ->findOne();
+                $descuento = 1;
+                if ($Promocion) {
+                    $descuento = 1 - ($Promocion->getDescuento() / 100);
+                }
                 if ($FacturaDetalle) {
                     $FacturaDetalle->setCantidad($valores['Cantidad'] + $FacturaDetalle->getCantidad());
                     $cantidad = $valores['Cantidad'];
@@ -63,7 +72,8 @@ class ventaActions extends sfActions {
                     $FacturaDetalle->setProductoId($valores['Producto']);
                     $FacturaDetalle->setCantidad($valores['Cantidad']);
                     $cantidad = $valores['Cantidad'];
-                    $FacturaDetalle->setPrecioUnitario($Producto->getPrecioCompra() * 1.2);
+
+                    $FacturaDetalle->setPrecioUnitario($Producto->getPrecioCompra() * 1.2 * $descuento);
                 }
                 if ($cantidad <= $Producto->getCantidad()) {
                     $Producto->setCantidad($Producto->getCantidad() - $cantidad);
@@ -130,13 +140,22 @@ class ventaActions extends sfActions {
         }
         if ($Factura->getActivo()) {
             foreach ($Detalles as $detalle) {
+                $fecha = date("d/m/Y");
+                $Promocion = PromocionQuery::create()
+                        ->filterByProductoId($detalle->getProductoId())
+                        ->where("fecha_inicio <= '$fecha' and fecha_fin >= '$fecha'")
+                        ->findOne();
+                $descuento = 1;
+                if ($Promocion) {
+                    $descuento = 1 - ($Promocion->getDescuento() / 100);
+                }
                 $Movimiento = new Movimiento();
                 $Movimiento->setTipoMovimiento('-');
                 $Movimiento->setClienteId($Factura->getClienteId());
                 $Movimiento->setProductoId($detalle->getProductoId());
                 $Movimiento->setCantidad($detalle->getCantidad());
                 $Movimiento->setProveedorId($detalle->getProveedorId());
-                $Movimiento->setPrecio($detalle->getPrecioUnitario());
+                $Movimiento->setPrecio($detalle->getPrecioUnitario() * $descuento);
                 $Movimiento->setFecha(date('Y-m-d'));
                 $Movimiento->save();
             }
@@ -146,6 +165,7 @@ class ventaActions extends sfActions {
             $BitacoraCambios->setDescripcion('Creacion de Factura con id: ' . sprintf("%05d", $Factura->getId()));
             $Usuario = UsuarioQuery::create()->findOneById(sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad'));
             if ($Usuario) {
+                $Factura->setCreatedBy($Usuario->getUsuario());
                 $BitacoraCambios->setCreatedBy($Usuario->getUsuario());
             }
             $BitacoraCambios->save();

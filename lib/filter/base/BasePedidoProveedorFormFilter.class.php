@@ -17,6 +17,8 @@ abstract class BasePedidoProveedorFormFilter extends BaseFormFilterPropel
       'estado'       => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'usuario_id'   => new sfWidgetFormPropelChoice(array('model' => 'Usuario', 'add_empty' => true)),
       'proveedor_id' => new sfWidgetFormPropelChoice(array('model' => 'Proveedor', 'add_empty' => true)),
+      'serie'        => new sfWidgetFormFilterInput(),
+      'documento'    => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
@@ -25,6 +27,8 @@ abstract class BasePedidoProveedorFormFilter extends BaseFormFilterPropel
       'estado'       => new sfValidatorPass(array('required' => false)),
       'usuario_id'   => new sfValidatorPropelChoice(array('required' => false, 'model' => 'Usuario', 'column' => 'id')),
       'proveedor_id' => new sfValidatorPropelChoice(array('required' => false, 'model' => 'Proveedor', 'column' => 'id')),
+      'serie'        => new sfValidatorPass(array('required' => false)),
+      'documento'    => new sfValidatorPass(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('pedido_proveedor_filters[%s]');
@@ -48,6 +52,8 @@ abstract class BasePedidoProveedorFormFilter extends BaseFormFilterPropel
       'estado'       => 'Text',
       'usuario_id'   => 'ForeignKey',
       'proveedor_id' => 'ForeignKey',
+      'serie'        => 'Text',
+      'documento'    => 'Text',
     );
   }
 }

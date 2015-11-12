@@ -20,6 +20,9 @@ abstract class BaseFacturaFormFilter extends BaseFormFilterPropel
       'total'        => new sfWidgetFormFilterInput(),
       'tipo_pago_id' => new sfWidgetFormPropelChoice(array('model' => 'TipoPago', 'add_empty' => true)),
       'activo'       => new sfWidgetFormChoice(array('choices' => array('' => 'yes or no', 1 => 'yes', 0 => 'no'))),
+      'fecha'        => new sfWidgetFormFilterInput(),
+      'serie'        => new sfWidgetFormFilterInput(),
+      'documento'    => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
@@ -31,6 +34,9 @@ abstract class BaseFacturaFormFilter extends BaseFormFilterPropel
       'total'        => new sfValidatorSchemaFilter('text', new sfValidatorNumber(array('required' => false))),
       'tipo_pago_id' => new sfValidatorPropelChoice(array('required' => false, 'model' => 'TipoPago', 'column' => 'id')),
       'activo'       => new sfValidatorChoice(array('required' => false, 'choices' => array('', 1, 0))),
+      'fecha'        => new sfValidatorPass(array('required' => false)),
+      'serie'        => new sfValidatorPass(array('required' => false)),
+      'documento'    => new sfValidatorPass(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('factura_filters[%s]');
@@ -57,6 +63,9 @@ abstract class BaseFacturaFormFilter extends BaseFormFilterPropel
       'total'        => 'Number',
       'tipo_pago_id' => 'ForeignKey',
       'activo'       => 'Boolean',
+      'fecha'        => 'Text',
+      'serie'        => 'Text',
+      'documento'    => 'Text',
     );
   }
 }
