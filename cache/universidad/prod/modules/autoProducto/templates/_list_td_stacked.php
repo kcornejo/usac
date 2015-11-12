@@ -1,0 +1,3 @@
+<td colspan="8">
+  <?php echo __('%%descripcion%% - %%marca%% - %%foto%% - %%tipo_producto%% - %%tipo_presentacion%% - %%cantidad_minima%% - %%costo%% - %%precio%%', array('%%descripcion%%' => $producto->getDescripcion(), '%%marca%%' => $producto->getMarca(), '%%foto%%' => get_partial('producto/foto', array('type' => 'list', 'producto' => $producto)), '%%tipo_producto%%' => $producto->getTipoProducto(), '%%tipo_presentacion%%' => $producto->getTipoPresentacion(), '%%cantidad_minima%%' => $producto->getCantidadMinima(), '%%costo%%' => $producto->getCosto(), '%%precio%%' => $producto->getPrecio()), 'messages') ?>
+</td>
