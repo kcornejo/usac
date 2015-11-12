@@ -17,5 +17,13 @@
                 </form>
             </div>
         </div>
+        <div class="panel">
+            <div class="panel-heading">
+                Datos
+            </div>
+            <div class="panel-body">
+                <?php include_partial('fin_dia/tabla', array('datos' => $datos)) ?>
+            </div>
+        </div>
     </div>
 </div>
