@@ -16,7 +16,7 @@ class ventaActions extends sfActions {
      * @param sfRequest $request A request object
      */
     public function executeIndex(sfWebRequest $request) {
-        $this->form = new VentaCabeceraForm();
+        $this->form = new VentaCabeceraForm(array('Fecha' => date('d/m/Y')));
         if ($request->isMethod('POST')) {
             $this->form->bind($request->getParameter('venta_cabecera'));
             if ($this->form->isValid()) {
@@ -24,6 +24,9 @@ class ventaActions extends sfActions {
                 $Factura = new Factura();
                 $Factura->setClienteId($valores['Cliente']);
                 $Factura->setTipoPagoId($valores['TipoPago']);
+                $Factura->setFecha($valores['Fecha']);
+                $Factura->setSerie($valores['Serie']);
+                $Factura->setDocumento($valores['Documento']);
                 $Factura->save();
                 $this->redirect('venta/detalle?id=' . $Factura->getId());
             }
@@ -108,7 +111,7 @@ class ventaActions extends sfActions {
         foreach ($Detalles as $detalle) {
             $Inventario = InventarioQuery::create()
                     ->filterByProductoId($detalle->getProductoId())
-                    ->filterByProveedorId($detalle->getProveedor())
+                    ->filterByProveedorId($detalle->getProveedorId())
                     ->findOne();
             $Inventario->setCantidad($Inventario->getCantidad() + $detalle->getCantidad());
             $Inventario->save();
@@ -120,7 +123,23 @@ class ventaActions extends sfActions {
 
     public function executeConfirmar(sfWebRequest $request) {
         $Factura = FacturaQuery::create()->findOneById($request->getParameter('id'));
+        $Detalles = FacturaDetalleQuery::create()->findByFacturaId($request->getParameter('id'));
+        if (sizeof($Detalles) == 0) {
+            $this->getUser()->setFlash('error', 'No existen productos ingresados en esta factura.');
+            $this->redirect('venta/detalle?id=' . $request->getParameter('id'));
+        }
         if ($Factura->getActivo()) {
+            foreach ($Detalles as $detalle) {
+                $Movimiento = new Movimiento();
+                $Movimiento->setTipoMovimiento('-');
+                $Movimiento->setClienteId($Factura->getClienteId());
+                $Movimiento->setProductoId($detalle->getProductoId());
+                $Movimiento->setCantidad($detalle->getCantidad());
+                $Movimiento->setProveedorId($detalle->getProveedorId());
+                $Movimiento->setPrecio($detalle->getPrecioUnitario());
+                $Movimiento->setFecha(date('Y-m-d'));
+                $Movimiento->save();
+            }
             $BitacoraCambios = new BitacoraCambios();
             $BitacoraCambios->setModelo('Factura');
             $BitacoraCambios->setIp(sfContext::getInstance()->getRequest()->getRemoteAddress());

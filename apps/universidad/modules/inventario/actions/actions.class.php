@@ -24,12 +24,19 @@ class inventarioActions extends sfActions {
                 $BitacoraCambios = new BitacoraCambios();
                 $BitacoraCambios->setModelo('Inventario');
                 $Producto = ProductoQuery::create()->findOneById($valores['Producto']);
-                $BitacoraCambios->setDescripcion('Ingreso de Inventario de Producto: ' . $Producto->getDescripcion(). ' con cantidad ' .$valores['Cantidad'] );
+                $BitacoraCambios->setDescripcion('Ingreso de Inventario de Producto: ' . $Producto->getDescripcion() . ' con cantidad ' . $valores['Cantidad']);
                 $BitacoraCambios->setIp($request->getRemoteAddress());
                 $Usuario = UsuarioQuery::create()->findOneById(sfContext::getInstance()->getUser()->getAttribute('usuario', null, 'seguridad'));
                 if ($Usuario) {
                     $BitacoraCambios->setCreatedBy($Usuario->getUsuario());
                 }
+                $Movimiento = new Movimiento();
+                $Movimiento->setTipoMovimiento('+');
+                $Movimiento->setProveedorId($valores['Proveedor']);
+                $Movimiento->setProductoId($Producto->getId());
+                $Movimiento->setCantidad($valores['Cantidad']);
+                $Movimiento->setPrecio($valores['Precio']);
+                $Movimiento->save();
                 $BitacoraCambios->save();
                 $Comprobacion = InventarioQuery::create()
                         ->filterByProductoId($valores['Producto'])
@@ -59,7 +66,5 @@ class inventarioActions extends sfActions {
                 ->limit(5)
                 ->find();
     }
-    
-   
 
 }
