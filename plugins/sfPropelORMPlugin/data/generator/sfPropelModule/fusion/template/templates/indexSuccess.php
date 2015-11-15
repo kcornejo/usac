@@ -4,11 +4,15 @@
 <div class="panel panel-info">
     <div class="panel-heading">
         <h3 class="panel-title"><i class="icon-reorder"></i>[?php echo <?php echo $this->getI18NString('list.title') ?> ?]</h3>
+        <div class="panel-title">
+            <div style="float:right;margin-top:30px">
+                [?php include_partial('<?php echo $this->getModuleName() ?>/list_batch_actions', array('helper' => $helper)) ?]
+                [?php include_partial('<?php echo $this->getModuleName() ?>/list_actions', array('helper' => $helper)) ?]
+            </div>
+        </div>
     </div>
     <div class="panel-body">
-
         <?php if ($this->configuration->hasFilterForm()): ?>
-
             <div class="tabbable portlet-tabs">
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#tab-listado" data-toggle="tab">Listado</a></li>

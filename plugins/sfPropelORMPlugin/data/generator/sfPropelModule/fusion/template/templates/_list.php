@@ -4,7 +4,7 @@
         [?php if (!$pager->getNbResults()): ?]
         <p>[?php echo __('No result', array(), 'sf_admin') ?]</p>
         [?php else: ?]
-        <div class="table-responsive">
+        <div class="table-responsive" style="max-height: 400px">
             <table class="table table-bordered">
                 <thead>
                     <tr class="active">
