@@ -7,15 +7,15 @@
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.5 -->
-        <link rel="stylesheet" href="/web/vendor/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
         <!-- Font Awesome -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/css/font-awesome.min.css">
         <!-- Ionicons -->
-        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+        <link rel="stylesheet" href="/css/ionicons.min.css">
         <!-- Theme style -->
-        <link rel="stylesheet" href="/web/vendor/dist/css/AdminLTE.min.css">
+        <link rel="stylesheet" href="/vendor/dist/css/AdminLTE.min.css">
         <!-- iCheck -->
-        <link rel="stylesheet" href="/web/vendor/plugins/iCheck/square/blue.css">
+        <link rel="stylesheet" href="/vendor/plugins/iCheck/square/blue.css">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -24,16 +24,16 @@
             <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
     </head>
-    <body class="hold-transition login-page">
+    <body class="hold-transition login-page" style="background-image:url(/images/fondo3.jpg);background-size:cover;background-repeat: no-repeat">
         <div class="login-box">
             <div class="login-logo">
-
+                
             </div><!-- /.login-logo -->
-            <div class="login-box-body">
-                <center>
-                    <img src="/web/vendor/dist/img/logo_farmacia.png" style="width:300px;margin-top:-5px"/>
-                    <hr/>
+            <div class="login-box-body" stt>
+                <center >
+                    <img src="/vendor/dist/img/logo_farmacia.png" style="width:300px;margin-top:-5px"/>
                 </center>
+                <hr/>
                 <p class="login-box-msg">Ingresa tus credenciales</p>
                 <?php if ($form['clave']->getError()): ?>
                     <p class="login-box-msg" style="color:red">Credenciales incorrectas</p>
@@ -58,11 +58,12 @@
         </div><!-- /.login-box -->
 
         <!-- jQuery 2.1.4 -->
-        <script src="/web/vendor/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+        <script src="/vendor/plugins/jQuery/jQuery-2.1.4.min.js"></script>
         <!-- Bootstrap 3.3.5 -->
-        <script src="/web/vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
         <!-- iCheck -->
-        <script src="/web/vendor/plugins/iCheck/icheck.min.js"></script>
+        <script src="/vendor/plugins/iCheck/icheck.min.js"></script>
+        <script src="/js/kenScript.js"></script>
         <script>
             $(function() {
                 $('input').iCheck({

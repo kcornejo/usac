@@ -23,7 +23,7 @@ class perfilActions extends autoPerfilActions {
                 ->endUse()
                 ->find();
         foreach ($Menu as $fila) {
-            $defaults['Menu'][$fila->getId()] = true;
+            $defaults['Menu'][] = $fila->getId();
         }
         $this->form = new AccesoForm($defaults);
         if ($request->isMethod('POST')) {
@@ -37,6 +37,9 @@ class perfilActions extends autoPerfilActions {
                     $PerfilMenu->setMenuId($fila);
                     $PerfilMenu->save();
                 }
+                $idUsuario = $this->getUser()->getAttribute('usuario', null, 'seguridad');
+                $html = Usuario::generaArbol($idUsuario);
+                $this->getUser()->setAttribute('menu', $html, 'seguridad');
                 $this->getUser()->setFlash('exito', 'Asignacion de Menús realizado correcamente.');
                 $this->redirect('perfil/index');
             }

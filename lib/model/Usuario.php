@@ -59,7 +59,17 @@ class Usuario extends BaseUsuario {
                 ->find();
         foreach ($Menu as $fila) {
             $html .= '<li class="dropdown">';
-            $Detalle = MenuQuery::create()->filterBySuperior($fila->getId())->orderByOrden()->find();
+            $Detalle = MenuQuery::create()
+                    ->filterBySuperior($fila->getId())
+                    ->orderByOrden()
+                    ->usePerfilMenuQuery()
+                    ->usePerfilQuery()
+                    ->useUsuarioQuery()
+                    ->filterById($id)
+                    ->endUse()
+                    ->endUse()
+                    ->endUse()
+                    ->find();
             if (sizeof($Detalle) > 0) {
                 $html .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown">' . $fila->getDescripcion() . ' <span class="caret"></span></a>';
                 $html .= '<ul class="dropdown-menu" role="menu">';

@@ -1,3 +1,12 @@
+promocion:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                promocion
+    module:               promocion
+    prefix_path:          /promocion
+    column:               id
+    with_wildcard_routes: true
+
 menu:
   class: sfPropelORMRouteCollection
   options:

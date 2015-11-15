@@ -12,16 +12,26 @@ generator:
     actions_base_class:    sfActions
 
     config:
-      actions: ~
+      actions:   ~
+       
+        
       fields:  ~
       list:
         title:             Listado de Usuarios
         display:           [usuario,  nombre, apellido, perfil]
+        object_actions:
+           _edit:           ~
+           _delete:         ~
+           cambio_clave:
+             label:         Cambio de Clave
+             action:        clave
+             params:         class=btn btn-xs btn-default
       filter:
          display:           [usuario,  nombre, apellido, perfil_id]
-      form:
-        display:           [usuario, clave, nombre,apellido, perfil_id]
+      form:               ~
       edit:
         title:           Editar Usuario
+        display:           [usuario, nombre,apellido, perfil_id]
       new:
         title:           Nuevo Usuario
+        display:           [usuario, clave, nombre,apellido, perfil_id]
